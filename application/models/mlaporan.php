@@ -15,7 +15,7 @@ class Mlaporan extends CI_Model
 	{
 		$data = array();
 		$query = $this->db->query('select distinct(year(tgl_pengiriman)) as tahun from pengiriman');
-		if (count($query) > 0) {
+		if (count($query->result_array()) > 0) {
 			foreach ($query->result_array() as $value) {
 				$data[] = $value;
 			}
@@ -28,7 +28,7 @@ class Mlaporan extends CI_Model
 	{
 		$data = array();
 		$query = $this->db->query('select distinct(month(tgl_pengiriman)) as tahun from pengiriman');
-		if (count($query) > 0) {
+		if (count($query->result_array()) > 0) {
 			foreach ($query->result_array() as $value) {
 				$data[] = $value;
 			}
@@ -42,7 +42,7 @@ class Mlaporan extends CI_Model
 		$data = array();
 		$param = array('bulan' => $bln, 'tahun' => $thn);
 		$query = $this->db->get_where('view_laporan_pengiriman_bulanan', $param);
-		if (count($query) > 0) {
+		if (count($query->result_array()) > 0) {
 			foreach ($query->result_array() as $value) {
 				$data[] = $value;
 			}
@@ -56,7 +56,7 @@ class Mlaporan extends CI_Model
 		$data = array();
 		$param = array('tahun' => $thn);
 		$query = $this->db->get_where('view_jumlah_pengiriman', $param);
-		if (count($query) > 0) {
+		if (count($query->result_array()) > 0) {
 			foreach ($query->result_array() as $value) {
 				$data[] = $value;
 			}
@@ -69,7 +69,7 @@ class Mlaporan extends CI_Model
 	{
 		$data = array();
 		$query = $this->db->query('select count(*) as jumlah_pengiriman from pengiriman where year(tgl_pengiriman) = '.$thn);
-		if (count($query) > 0) {
+		if (count($query->result_array()) > 0) {
 			foreach ($query->result_array() as $value) {
 				$data[] = $value;
 			}
