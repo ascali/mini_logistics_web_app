@@ -1,7 +1,7 @@
 <div class="well">
 	<h2>Selamat Datang!</h2>
 	<p>
-		Ini adalah halaman website dari PT. Try Cycle Transporindo. 
+		Ini adalah halaman website dari PT. Multiartha Retalindo Lestari. 
 		Melalui website ini Anda dapat melakukan hubungan dengan kami untuk komunikasi mengenai layanan-layanan kami.
 		Dengan website ini juga kami berusaha meningkatkan layanan yang kami berikan untuk Anda sebagai pelanggan kami,
 		nikmati kemudahan layanan kami untuk mencari informasi dalam pengiriman barang Anda.

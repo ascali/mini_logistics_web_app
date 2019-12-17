@@ -33,11 +33,11 @@ if (count($pengiriman) > 0) {
 	$pdf = new FPDF();
 	$pdf->AddPage("", "A4");
 
-	$pdf->SetAuthor("PT. Try Cycle Transporindo");
+	$pdf->SetAuthor("PT. Multiartha Retalindo Lestari");
 	$pdf->SetTitle("Laporan Pengiriman Bulanan");
 
 	$pdf->SetFont("Times", "B", "18");
-	$pdf->Cell(0, 20, "PT. Try Cycle Transporindo", "B", 1, "C");
+	$pdf->Cell(0, 20, "PT. Multiartha Retalindo Lestari", "B", 1, "C");
 	$pdf->Ln(10);
 
 	$pdf->SetFont("Times", "B", "14");

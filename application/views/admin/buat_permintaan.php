@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title><?php echo $judul; ?> - PT. Try Cycle Transporindo</title>
+	<title><?php echo $judul; ?> - PT. Multiartha Retalindo Lestari</title>
 	<!-- CSS -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.css">

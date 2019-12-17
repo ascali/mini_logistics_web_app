@@ -17,7 +17,7 @@ class Pengiriman extends CI_Controller
 
 		$ipengiriman = $this->mpengiriman->genIdPengiriman();
 		foreach ($ipengiriman as $val) {
-			$id_pengiriman = $val['new_id'];
+			$id_pengiriman = $val/*$val['new_id']*/;
 		}
 		$data['id'] = $id_pengiriman;
 		$this->load->vars($data);

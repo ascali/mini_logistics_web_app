@@ -31,7 +31,7 @@ class Page extends CI_Controller
 		$id_kota_tujuan = $this->input->post('cbKotaTujuan');
 		$data['judul'] = 'Biaya Pengiriman';
 		$data['konten'] = 'guest/cek_biaya';
-		$data['aktif'] = 'active';
+		$data['aktif'] = 'dark';
 		$data['biaya'] = $this->mbiaya->getBiayaForSearch($id_kota_tujuan);
 		$data['kota'] = $this->mkota->getKotaNotEqual('Surabaya');
 		$this->load->view('guest/page', $data);
@@ -77,7 +77,7 @@ class Page extends CI_Controller
 	{
 		$data['judul'] = 'Layanan';
 		$data['konten'] = 'guest/layanan';
-		$data['aktif'] = 'active';
+		$data['aktif'] = 'dark';
 		$this->load->view('guest/page', $data);
 	}
 
@@ -85,7 +85,7 @@ class Page extends CI_Controller
 	{
 		$data['judul'] = 'Profil Perusahaan';
 		$data['konten'] = 'guest/profil';
-		$data['aktif'] = 'active';
+		$data['aktif'] = 'dark';
 		$this->load->view('guest/page', $data);
 	}
 

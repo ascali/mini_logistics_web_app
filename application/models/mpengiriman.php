@@ -15,7 +15,7 @@ class Mpengiriman extends CI_Model
 	{
 		$data = array();
 		//$this->db->select_max('id_pengiriman', 'new_id');
-		$query = $this->db->query('select max(id_pengiriman)+1 as new_id from pengiriman');
+		$query = $this->db->query("SELECT max(id_pengiriman)+1 as new_id FROM pengiriman");
 		//$query = $this->db->get('pengiriman');
 		if ($query->num_rows() > 0) {
 			foreach ($query->result_array() as $row) {
@@ -177,7 +177,7 @@ class Mpengiriman extends CI_Model
 		$data = array();
 		$param = array('id_pengiriman' => $id_pengiriman);
 		$query = $this->db->query('select * from view_sum_berat_pengiriman where id_pengiriman = '.$id_pengiriman);
-		if (count($query) > 0) {
+		if (count($query->result_array()) > 0) {
 			foreach ($query->result_array() as $row) {
 				$data[] = $row;
 			}
@@ -197,7 +197,7 @@ class Mpengiriman extends CI_Model
 	{
 		$data = array();
 		$query = $this->db->query('select * from view_surat_pengiriman where id_pengiriman = '.$id_pengiriman);
-		if (count($query) > 0) {
+		if (count($query->result_array()) > 0) {
 			foreach ($query->result_array() as $value) {
 				$data[] = $value;
 			}
@@ -210,7 +210,7 @@ class Mpengiriman extends CI_Model
 	{
 		$data = array();
 		$query = $this->db->query('select * from view_detil_barang_pengiriman where id_pengiriman = '.$id_pengiriman);
-		if (count($query) > 0) {
+		if (count($query->result_array()) > 0) {
 			foreach ($query->result_array() as $value) {
 				$data[] = $value;
 			}

@@ -6,11 +6,11 @@ require('assets/fpdf/fpdf.php');
 $pdf = new FPDF();
 $pdf->AddPage("", "A4");
 
-$pdf->SetAuthor("PT. Try Cycle Transporindo");
+$pdf->SetAuthor("PT. Multiartha Retalindo Lestari");
 $pdf->SetTitle("Surat Pengambilan Barang");
 
 $pdf->SetFont("Times", "B", "18");
-$pdf->Cell(0, 20, "PT. Try Cycle Transporindo", "B", 1, "C");
+$pdf->Cell(0, 20, "PT. Multiartha Retalindo Lestari", "B", 1, "C");
 
 $pdf->SetFont("Times", "BU", "14");
 $pdf->Cell(0, 10, "Surat Pengambilan Barang", 0, 1, "C");
@@ -18,7 +18,7 @@ $pdf->SetFont("Times", "", "12");
 $pdf->Cell(0, 0, "No. Pengiriman: ".$no_pengiriman, 0, 1, "C");
 $pdf->Ln(5);
 
-$kata1 = "Berdasarkan permintaan pengiriman barang yang Anda minta kepada PT. Try Cycle Transporindo pada ".$tgl_pengiriman.
+$kata1 = "Berdasarkan permintaan pengiriman barang yang Anda minta kepada PT. Multiartha Retalindo Lestari pada ".$tgl_pengiriman.
 ", maka dengan ini".
 " kami menugaskan Sdr/i ".$nama_karyawan." (NIK. ".$nik.") untuk mengambil barang dengan rincian sebagai berikut:";
 $pdf->Write(10, $kata1);
@@ -50,7 +50,7 @@ $pdf->Ln();
 $pdf->Write(10, "Untuk itu kami meminta kepada Anda untuk mempersilahkan karyawan kami mengambil barang Anda. Terima kasih.");
 $pdf->Ln(20);
 $pdf->SetFont("Times", "B", "14");
-$pdf->Cell(0, 10, "PT. Try Cycle Transporindo", 0, 1, "R");
+$pdf->Cell(0, 10, "PT. Multiartha Retalindo Lestari", 0, 1, "R");
 
 $pdf->Output("Surat Pengambilan Barang (No. Pengiriman ".$no_pengiriman.").pdf", "I");
 ?>

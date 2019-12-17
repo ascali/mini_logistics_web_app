@@ -2,7 +2,7 @@
 echo heading($judul, 3);
 
 echo "<p>";
-echo "Halaman ini adalah halaman untuk mengatur akses terhadap <strong>Halaman <i>PT. Try Cycle Transporindo</i></strong>.";
+echo "Halaman ini adalah halaman untuk mengatur akses terhadap <strong>Halaman <i>PT. Multiartha Retalindo Lestari</i></strong>.";
 echo br();
 echo "Anda dapat mengubah <i>User name</i> dan <i>Password</i> untuk masuk halaman ini.";
 echo "</p>";

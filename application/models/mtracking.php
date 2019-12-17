@@ -29,8 +29,8 @@ class Mtracking extends CI_Model
 	public function getTrackingForCust($id_cust)
 	{
 		$data = array();
-		$query = $this->db->query('select no_resi, id_pengiriman, id_cust, status_pengiriman, tanggal, posisi, keterangan
-			from tracking where id_cust = '.$id_cust.' group by no_resi order by tanggal asc');
+		$query = $this->db->query("SELECT no_resi, id_pengiriman, id_cust, status_pengiriman, tanggal, posisi, keterangan
+			from tracking where id_cust = '$id_cust' group by no_resi order by tanggal asc");
 		//$this->db->select('no_resi, id_pengiriman, id_cust, status_pengiriman, tanggal, posisi, keterangan');
 		//$this->db->from('tracking');
 		//$this->db->where('id_cust', $id_cust);
@@ -47,8 +47,8 @@ class Mtracking extends CI_Model
 	public function detil_tracking($no_resi)
 	{
 		$data = array();
-		$query = $this->db->query("select no_resi, id_pengiriman, id_cust, status_pengiriman, tanggal, posisi, keterangan
-			from tracking where no_resi = '".$no_resi."' order by tanggal desc");
+		$query = $this->db->query("SELECT no_resi, id_pengiriman, id_cust, status_pengiriman, tanggal, posisi, keterangan
+			FROM tracking WHERE no_resi = '".$no_resi."' order by tanggal desc");
 		//$this->db->select('no_resi, id_pengiriman, id_cust, status_pengiriman, tanggal, posisi, keterangan');
 		//$this->db->from('tracking');
 		//$this->db->where('no_resi', $no_resi);
@@ -133,15 +133,20 @@ class Mtracking extends CI_Model
 
 	public function detil_barang($id_cust, $no_resi)
 	{
-		$param = array('no_resi' => $no_resi, 'id_cust' => $id_cust);
-		$query = $this->db->get_where('view_barang_tracking', $param);
+		// view_barang_tracking
+		$param = array('no_resi' => $no_resi/*, 'id_cust' => $id_cust*/);
+		$query = $this->db->get_where('view_det_tracking', $param);
 		return $query->result_array();
 	}
 	
 	public function detil_pengiriman($id_cust, $no_resi)
 	{
-		$param = array('no_resi' => $no_resi, 'id_cust' => $id_cust);
-		$query = $this->db->get_where('view_detil_pengiriman_tracking', $param);
+		// view_detil_pengiriman_tracking
+		// $param = array('no_resi' => $no_resi, 'id_cust' => $id_cust);
+		// $query = $this->db->get_where('view_history_pengiriman', $param);
+		$query = $this->db->query("SELECT * FROM view_pengiriman vp 
+				JOIN view_history_pengiriman vhp ON vp.id_pengiriman=vhp.id_pengiriman
+				WHERE vhp.no_resi = '$no_resi' AND vhp.id_cust = $id_cust ");
 		return $query->result_array();
 	}
 }
