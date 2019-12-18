@@ -40,5 +40,42 @@ class Bidang_kerja extends CI_Controller
 		$this->session->set_flashdata('message', 'Bidang kerja sudah diubah');
 		redirect('pg_admin/bidang_kerja', 'refresh');
 	}
+
+	public function read_json(){
+		if (!$this->input->get('id')) {
+			$data = $this->mbidang->getAllBidang();
+		} else {
+			$data = $this->mbidang->getBidangById($this->input->get('id'));
+			$data = $data[0];
+		}
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function create_json(){
+		$nama_bidang_kerja = $this->input->post('txtBidangKerja');
+		$data = $this->mbidang->insert($nama_bidang_kerja);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function update_json(){
+		$id = $this->input->post('id'); 
+		$nama = $this->input->post('txtNamaBidangKerja');
+		$data = $this->mbidang->update($id, $nama);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function delete_json(){
+		$id = $this->input->post('id');
+		$data = $this->mbidang->delete($id);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
 }
 ?>

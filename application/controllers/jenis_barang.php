@@ -41,5 +41,42 @@ class Jenis_barang extends CI_Controller
 		$this->session->set_flashdata('message', 'Jenis barang sudah diubah');
 		redirect('pg_admin/jenis_barang', 'refresh');
 	}
+
+	public function read_json(){
+		if (!$this->input->get('id')) {
+			$data = $this->mjenis->getAllJenis();
+		} else {
+			$data = $this->mjenis->getJenisById($this->input->get('id'));
+			$data = $data[0];
+		}
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function create_json(){
+		$jenis_barang = $this->input->post('txtJenisBarang');
+		$data = $this->mjenis->insert($jenis_barang);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function update_json(){
+		$id = $this->input->post('id'); 
+		$nama = $this->input->post('txtJenisBarang');
+		$data = $this->mjenis->update($id, $nama);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function delete_json(){
+		$id = $this->input->post('id');
+		$data = $this->mjenis->delete($id);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
 }
 ?>

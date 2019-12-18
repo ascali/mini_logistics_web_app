@@ -49,6 +49,7 @@ class Biaya extends CI_Controller
 		redirect('pg_admin/biaya', 'refresh');
 		//echo $id." ".$kota_asal." ".$kota_tujuan." ".$total_berat." ".$biaya;
 	}
+	
 	public function read_json(){
 		if (!$this->input->get('id')) {
 			$data = $this->mbiaya->getAllBiaya();
