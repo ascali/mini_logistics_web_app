@@ -141,5 +141,64 @@ class Customer extends CI_Controller
 		header('location:'.base_url().'index.php');
 		redirect('page', 'refresh');
 	}
+
+	public function read_json(){
+		if (!$this->input->get('id')) {
+			$data = $this->mcustomer->getAllCustomer();
+		} else {
+			$data = $this->mcustomer->getCustomerById($this->input->get('id'));
+			$data = $data[0];
+		}
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function create_json(){
+		$bidang_kerja 		= $this->input->post('inputPekerjaan');
+		$email_cust 		= $this->input->post('inputEmail');
+		$password_cust 		= $this->input->post('inputPassword');
+		$nama_cust 			= $this->input->post('inputNamaLengkap');
+		$jenis_kel_cust		= $this->input->post('inputJenisKelamin');
+		$tgl_lahir_cust		= $this->input->post('inputTanggalLahir');
+		$alamat_cust 		= $this->input->post('inputAlamat');
+		$kota_cust 			= $this->input->post('inputKota');
+		$no_telp_cust 		= $this->input->post('inputNoTelepon');
+		$perusahaan_cust 	= $this->input->post('inputNamaPerusahaan');
+		$alamat_per_cust 	= $this->input->post('inputAlamatPerusahaan');
+		$data 				= $this->mcustomer->insert($bidang_kerja, $email_cust, $password_cust, $nama_cust, $jenis_kel_cust,
+			$tgl_lahir_cust, $alamat_cust, $kota_cust, $no_telp_cust, $perusahaan_cust, $alamat_per_cust);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function updated_json(){
+		$id_cust			= $this->input->post('txtIdCust');
+		$bidang_kerja 		= $this->input->post('cbBidangKerja');
+		$email_cust 		= $this->input->post('txtEmailCust');
+		$password_cust 		= $this->input->post('txtPasswordCust');
+		$nama_cust 			= $this->input->post('txtNamaCust');
+		$jenis_kel_cust		= $this->input->post('rbJenisKelCust');
+		$tgl_lahir_cust		= $this->input->post('txtTglLahirCust');
+		$alamat_cust 		= $this->input->post('txtAlamatCust');
+		$kota_cust 			= $this->input->post('txtKotaCust');
+		$no_telp_cust 		= $this->input->post('txtNoTelpCust');
+		$perusahaan_cust 	= $this->input->post('txtPerusahaanCust');
+		$alamat_per_cust 	= $this->input->post('txtAlamatPerCust');
+		$data 				= $this->mcustomer->update($id_cust, $bidang_kerja, $email_cust, $password_cust, $nama_cust, 
+			$jenis_kel_cust, $tgl_lahir_cust, $alamat_cust, $kota_cust, $no_telp_cust, $perusahaan_cust, $alamat_per_cust);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function delete_json(){
+		$id = $this->input->post('txtIdCust');
+		$data = $this->mcustomer->delete($id);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
 }
 ?>

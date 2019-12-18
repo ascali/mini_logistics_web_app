@@ -4,14 +4,19 @@
     Perhitungan biaya berdasarkan kepada tempat asal dan tujuan pengiriman, serta berdasarkan dengan
     total berat barang yang ingin Anda kirim.
 </p>
-<form method="post" action="<?php echo base_url(); ?>index.php/page/cek_biaya_pengiriman">
+<form method="GET" action="<?php echo base_url(); ?>index.php/page/cek_biaya_pengiriman">
   <table>
     <tr>
       <td>Kota Asal</td>
       <td>:</td>
       <td>
-        <select name="cbKotaAsal" disabled>
-          <option value="1">Surabaya</option>
+        <select name="cbKotaAsal" class="form form-control" required="">
+          <option disabled selected>--Pilih Kota--</option>
+          <?php
+          foreach ($kota as $data) {
+            echo "<option value='".$data['id_kota']."'>".$data['nama_kota']."</option>";
+          }
+          ?>
         </select>
       </td>
     </tr>
@@ -19,7 +24,8 @@
       <td>Kota Tujuan</td>
       <td>:</td>
       <td>
-        <select name="cbKotaTujuan">
+        <select name="cbKotaTujuan" class="form form-control" required="">
+          <option disabled selected>--Pilih Kota--</option>
           <?php
           foreach ($kota as $data) {
             echo "<option value='".$data['id_kota']."'>".$data['nama_kota']."</option>";
@@ -50,7 +56,7 @@
       </td>
     </tr>
   </table>
-
+  <br>
   <table class="table table-hover">
     </caption>
     <thead>
@@ -67,7 +73,7 @@
           $idx = 1;
           foreach ($biaya as $list) {
             echo "<tr>";
-            echo "<td>Surabaya</td>";
+            echo "<td>".$list['nama_kota_asal']."</td>";
             echo "<td>".$list['nama_kota_tujuan']."</td>";
             echo "<td>".$list['total_berat']." Kg</td>";
             echo "<td>Rp".number_format($list['biaya'], 0, ",", ".").",00</td>";

@@ -125,7 +125,7 @@ if (count($tracking) > 0) {
 }
 ?>
 <div class="form-actions">
-	<button class="btn btn-primary pull-right" onclick="javascript:window.back();">
+	<button class="btn btn-primary pull-right" onclick="window.history.back();">
 		<i class="icon-chevron-left icon-white"></i>&nbsp;Kembali
 	</button>
 </div>

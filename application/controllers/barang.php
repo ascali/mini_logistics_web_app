@@ -77,5 +77,58 @@ class Barang extends CI_Controller
 		redirect('pg_admin/barang', 'refresh');
 		//echo $id." ".$kota_asal." ".$kota_tujuan." ".$total_berat." ".$biaya;
 	}
+
+	public function read_json(){
+		if (!$this->input->get('id')) {
+			$data = $this->mbarang->getAllBarang();
+		} else {
+			$data = $this->mbarang->getBarangById($this->input->get('id'));
+			$data = $data[0];
+		}
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function create_json(){
+		$nama_barang = $this->input->post('txtNamaBarang');
+		$jenis_barang = $this->input->post('cbJenisBarang');
+		$berat_barang = $this->input->post('txtBeratBarang');
+		$satuan_barang = $this->input->post('cbSatuanBarang');
+		$data = $this->mbarang->insert($jenis_barang, $nama_barang, $berat_barang, $satuan_barang);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function update_json(){
+		$id = $this->input->post('id');
+		$nama_barang = $this->input->post('txtNamaBarang');
+		$jenis_barang = $this->input->post('cbJenisBarang');
+		$berat_barang = $this->input->post('txtBeratBarang');
+		$satuan_barang = $this->input->post('cbSatuanBarang');
+		$data = $this->mbarang->update($id, $jenis_barang, $nama_barang, $berat_barang, $satuan_barang);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function delete_json(){
+		$id = $this->input->post('id');
+		$data = $this->mbarang->delete($id);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function delete_detil_pengiriman_json(){
+		$this->load->model('mdetilpengiriman');
+		$id_barang = $this->input->post('id');
+		$id_pengiriman = $this->input->post('id_pengiriman');
+		$data = $this->mdetilpengiriman->delete($id_barang, $id_pengiriman);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
 }
 ?>

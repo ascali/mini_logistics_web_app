@@ -18,6 +18,7 @@ class Pg_admin extends CI_Controller
 		} else {
 			$data['judul'] = 'Beranda';
 			$data['aktif'] = 'active';
+			$data['module'] = 'beranda';
 			$data['konten'] = 'admin/beranda';
 			$this->load->view('admin/pg_admin', $data);
 		}
@@ -26,6 +27,7 @@ class Pg_admin extends CI_Controller
 	public function login()
 	{
 		$data['judul'] = 'Login Halaman Admin';
+		$data['module'] = 'login';
 		$this->load->view('admin/login', $data);
 	}
 
@@ -63,6 +65,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Kota & Provinsi';
 		$data['konten'] = 'admin/kota_provinsi';
 		$data['aktif'] = 'active';
+		$data['module'] = 'kota_provinsi';
 		$data['kota'] = $this->mkota->getAllKota();
 		$data['provinsi'] = $this->mkota->getAllProvinsi();//$this->mprovinsi->getAllProvinsi();
 		$this->load->vars($data);
@@ -74,6 +77,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Promo';
 		$data['konten'] = 'admin/promo';
 		$data['aktif'] = 'active';
+		$data['module'] = 'promo';
 		$data['promo'] = $this->mpromo->getAllPromo();
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
@@ -84,6 +88,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Lowongan Kerja';
 		$data['konten'] = 'admin/lowongan';
 		$data['aktif'] = 'active';
+		$data['module'] = 'lowongan';
 		//$data['lowongan'] = $this->mlowongan->getAllLowongan();
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
@@ -94,6 +99,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Perusahaan Rekanan';
 		$data['konten'] = 'admin/rekanan';
 		$data['aktif'] = 'active';
+		$data['module'] = 'rekanan';
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
 	}
@@ -103,6 +109,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Bidang Kerja';
 		$data['konten'] = 'admin/bidang_kerja';
 		$data['aktif'] = 'active';
+		$data['module'] = 'bidang_kerja';
 		$data['bidang'] = $this->mbidang->getAllBidang();
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
@@ -113,6 +120,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Biaya Pengiriman';
 		$data['konten'] = 'admin/biaya_pengiriman';
 		$data['aktif'] = 'active';
+		$data['module'] = 'biaya';
 		$data['biaya'] = $this->mbiaya->getAllBiaya();
 		$data['kota'] = $this->mkota->getAllKota();
 		$data['provinsi'] = $this->mkota->getAllProvinsi();
@@ -125,6 +133,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Jenis Barang';
 		$data['konten'] = 'admin/jenis_barang';
 		$data['aktif'] = 'active';
+		$data['module'] = 'jenis_barang';
 		$data['jenis'] = $this->mjenis->getAllJenis();
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
@@ -135,6 +144,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Kelolah Otorisasi';
 		$data['konten'] = 'admin/admin';
 		$data['aktif'] = 'active';
+		$data['module'] = 'admin';
 		$data['admin'] = $this->madmin->getAllAdmin();
 		$data['admin_id'] = $this->session->userdata('admin_id');
 		$data['admin_name'] = $this->session->userdata('admin_name');
@@ -180,6 +190,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Barang';
 		$data['konten'] = 'admin/barang';
 		$data['aktif'] = 'active';
+		$data['module'] = 'barang';
 		$data['barang'] = $this->mbarang->getAllBarang();
 		$data['jenis'] = $this->mjenis->getAllJenis();
 		$data['paging'] = $this->pagination->create_links();
@@ -192,6 +203,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Customer';
 		$data['konten'] = 'admin/customer';
 		$data['aktif'] = 'active';
+		$data['module'] = 'customer';
 		$data['customer'] = $this->mcustomer->getAllCustomer();
 		$data['bidang'] = $this->mbidang->getAllBidang();
 		$this->load->vars($data);
@@ -203,6 +215,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Pengiriman';
 		$data['konten'] = 'admin/pengiriman';
 		$data['aktif'] = 'active';
+		$data['module'] = 'pengiriman';
 		$data['pengiriman'] = $this->mpengiriman->getAllPengiriman();
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
@@ -213,6 +226,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Status Pengiriman';
 		$data['konten'] = 'admin/status';
 		$data['aktif'] = 'active';
+		$data['module'] = 'status';
 		$data['status'] = $this->mstatus->getAllStatus();
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
@@ -223,6 +237,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Laporan';
 		$data['konten'] = 'admin/laporan';
 		$data['aktif'] = 'active';
+		$data['module'] = 'laporan';
 		$data['tahun'] = $this->mlaporan->getTahunPengiriman();
 		$data['bulan'] = $this->mlaporan->getBulanPengiriman();
 		$this->load->vars($data);
@@ -264,6 +279,7 @@ class Pg_admin extends CI_Controller
 		$data['judul'] = 'Tracking';
 		$data['konten'] = 'admin/tracking';
 		$data['aktif'] = 'active';
+		$data['module'] = 'tracking';
 		$data['tracking'] = $this->mtracking->ambil_tracking($config['per_page'], $id);
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);

@@ -3,10 +3,10 @@
 <form method="post" class="form-seacrh">
 	<legend>Operasi</legend>
 	<div class="input-append">
-		<input type="text" placeholder="Cari data">
+		<!-- <input type="text" placeholder="Cari data">
 		<button type="submit" class="btn">
 			<i class="icon-search"></i>&nbsp;Cari
-		</button>
+		</button> -->
 		<a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">
 			<i class="icon-plus-sign icon-white"></i>&nbsp;Tambah Data
 		</a>
@@ -31,8 +31,8 @@
 				foreach ($biaya as $list) {
 					echo "<tr>";
 					echo "<td>".$idx."</td>";
-					echo "<td>".$list['id_kota_asal']."</td>";
-					echo "<td>".$list['id_kota_tujuan']."</td>";
+					echo "<td>".$list['kota_asal']."</td>";
+					echo "<td>".$list['kota_tujuan']."</td>";
 					echo "<td>".$list['total_berat']."</td>";
 					echo "<td>Rp".number_format($list['biaya'], 0, ",", ".").",00</td>";
 					echo "<td>";

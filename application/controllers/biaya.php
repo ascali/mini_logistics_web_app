@@ -49,5 +49,47 @@ class Biaya extends CI_Controller
 		redirect('pg_admin/biaya', 'refresh');
 		//echo $id." ".$kota_asal." ".$kota_tujuan." ".$total_berat." ".$biaya;
 	}
+	public function read_json(){
+		if (!$this->input->get('id')) {
+			$data = $this->mbiaya->getAllBiaya();
+		} else {
+			$data = $this->mbiaya->getAllBiayaId($this->input->get('id'));
+			$data = $data[0];
+		}
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function create_json(){
+		$kota_asal = $this->input->post('cbKotaAsal');
+		$kota_tujuan = $this->input->post('cbKotaTujuan');
+		$total_berat = $this->input->post('txtTotalBerat');
+		$biaya = $this->input->post('txtBiaya');
+		$data = $this->mbiaya->insert($kota_asal, $kota_tujuan, $total_berat, $biaya);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function update_json(){
+		$id = $this->input->post('id');
+		$kota_asal = $this->input->post('cbKotaAsal');
+		$kota_tujuan = $this->input->post('cbKotaTujuan');
+		$total_berat = $this->input->post('txtTotalBerat');
+		$biaya = $this->input->post('txtBiaya');
+		$data = $this->mbiaya->update($id, $kota_asal, $kota_tujuan, $total_berat, $biaya);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
+
+	public function delete_json(){
+		$id = $this->input->post('id');
+		$data = $this->mbiaya->delete($id);
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
 }
 ?>

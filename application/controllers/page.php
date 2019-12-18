@@ -22,18 +22,24 @@ class Page extends CI_Controller
 		$data['konten'] = 'guest/biaya';
 		$data['aktif'] = 'active';
 		$data['biaya'] = $this->mbiaya->getBiayaForView();
-		$data['kota'] = $this->mkota->getKotaNotEqual('Surabaya');
+		$data['kota'] = $this->mkota->getAllKota();
 		$this->load->view('guest/page', $data);
 	}
 
 	public function cek_biaya_pengiriman()
 	{
-		$id_kota_tujuan = $this->input->post('cbKotaTujuan');
+		$id_kota_asal = $this->input->get('cbKotaAsal');
+		$id_kota_tujuan = $this->input->get('cbKotaTujuan');
 		$data['judul'] = 'Biaya Pengiriman';
-		$data['konten'] = 'guest/cek_biaya';
-		$data['aktif'] = 'dark';
-		$data['biaya'] = $this->mbiaya->getBiayaForSearch($id_kota_tujuan);
-		$data['kota'] = $this->mkota->getKotaNotEqual('Surabaya');
+		$data['aktif'] = 'active';
+		$data['kota'] = $this->mkota->getAllKota();
+		if (is_null($id_kota_asal)||is_null($id_kota_tujuan)||empty($id_kota_asal)||empty($id_kota_tujuan)) {
+			$data['konten'] = 'guest/biaya';
+			$data['biaya'] = $this->mbiaya->getBiayaForView();
+		} else {
+			$data['konten'] = 'guest/cek_biaya';
+			$data['biaya'] = $this->mbiaya->getBiayaForSearch($id_kota_asal, $id_kota_tujuan);
+		}
 		$this->load->view('guest/page', $data);
 	}
 
