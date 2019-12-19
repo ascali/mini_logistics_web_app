@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title><?php echo $judul; ?></title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="<?= base_url(); ?>assets/img/nawala.jpg" sizes="180x180">
+    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.jpg" sizes="32x32" type="image/png">
+    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.jpg" sizes="16x16" type="image/png"> 
+    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.jpg"> 
+    
     <!-- Le styles -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.css">

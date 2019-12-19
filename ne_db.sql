@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`ADMIN_ID`, `ADMIN_NAME`, `ADMIN_PASSWORD`) VALUES
-(1, 'admin', '123');
+(1, 'admin', 'password');
 
 -- --------------------------------------------------------
 
@@ -189,11 +189,11 @@ CREATE TABLE IF NOT EXISTS `customer` (
 --
 
 INSERT INTO `customer` (`ID_CUST`, `ID_BIDANG_KERJA`, `EMAIL_CUST`, `PASSWORD_CUST`, `NAMA_CUST`, `JENIS_KEL_CUST`, `TGL_LAHIR_CUST`, `ALAMAT_CUST`, `KOTA_CUST`, `NO_TELP_CUST`, `PERUSAHAAN_CUST`, `ALAMAT_PER_CUST`) VALUES
-(1, 3, 'thony.caktoy@gmail.com', '26101993', 'Thony Hermawan', 'L', '1993-10-26', 'Jl. Tenggilis Lama 3B No. 38A', 'Surabaya', '085755300811', 'Kupu Corp', 'Jl. Seluruh Surabaya No. 1'),
-(2, 1, 'obygothic@gmail.com', 'obysetyawan', 'M. Oby Maulana', 'L', '1993-08-31', '', '', '', '', ''),
-(4, 1, 'dwicbk@ymail.com', 'dwicbk', 'Dwi Prasetyo Pambudi', 'L', '1993-09-20', 'Jl. Sambikerep No. 100', 'Surabaya', '085646737818', 'UD. Rianti Jaya Makmur', 'Jl. Sambikerep No. 100-101'),
-(5, 1, 'cumapian@gmail.com', '123', 'Septyan', 'L', '2014-05-22', 'Manukan', 'Surabaya', '085647298', 'UD. Rianti Jaya Makmur', 'Manukan'),
-(6, 3, 'johanes@gmail.com', 'jojo', 'Johanes Aditya', 'L', '1992-08-12', 'Jl. Perum. Nirwana Blok VII No.86', 'Surabaya', '085638010929', 'CV. Karunia Bakti Bersama', 'Jl. Kedung Baruk No. 98 Surabaya');
+(1, 3, '121@dmailinator.com', '121', 'Thony Hermawan', 'L', '1993-10-26', 'Jl. Tenggilis Lama 3B No. 38A', 'Surabaya', '085755300811', 'Kupu Corp', 'Jl. Seluruh Surabaya No. 1'),
+(2, 1, '122@dmailinator.com', '122', 'M. Oby Maulana', 'L', '1993-08-31', '', '', '', '', ''),
+(4, 1, '124@mailinator.com', '124', 'Dwi Prasetyo Pambudi', 'L', '1993-09-20', 'Jl. Sambikerep No. 100', 'Surabaya', '085646737818', 'UD. Rianti Jaya Makmur', 'Jl. Sambikerep No. 100-101'),
+(5, 1, '123@mailinator.com', '123', 'Septyan', 'L', '2014-05-22', 'Manukan', 'Surabaya', '085647298', 'UD. Rianti Jaya Makmur', 'Manukan'),
+(6, 3, '125@dmailinator.com', '125', 'Johanes Aditya', 'L', '1992-08-12', 'Jl. Perum. Nirwana Blok VII No.86', 'Surabaya', '085638010929', 'CV. Karunia Bakti Bersama', 'Jl. Kedung Baruk No. 98 Surabaya');
 
 -- --------------------------------------------------------
 
