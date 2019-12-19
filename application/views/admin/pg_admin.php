@@ -167,14 +167,14 @@
         box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
       }
       .bgg1{
-        background: #abbaab;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #9fbd9f; /*#abbaab*/  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #ffffff, #9fbd9f) /*#abbaab*/;  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #ffffff, #9fbd9f) /*#abbaab*/; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
       .bgg2{
-        background: #abbaab;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #9fbd9f; /*#abbaab*/  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #ffffff, #9fbd9f) /*#abbaab*/;  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #ffffff, #9fbd9f) /*#abbaab*/; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
     </style>
     <!-- Custom styles for this template -->
@@ -185,7 +185,7 @@
       <!-- <input <center></center>lass="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#"><span data-feather="log-out"></span> Log Out</a>
+          <a class="nav-link" href="<?php echo base_url(); ?>index.php/pg_admin/logout"><span data-feather="log-out"></span> Log Out</a>
         </li>
       </ul>
     </nav>
