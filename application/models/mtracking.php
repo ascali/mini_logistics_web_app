@@ -14,14 +14,16 @@ class Mtracking extends CI_Model
 	public function getAllTracking()
 	{
 		$data = array();
-		$this->db->select('no_resi, id_pengiriman, id_cust, status_pengiriman, tanggal, posisi, keterangan');
-		$this->db->from('tracking');
-		$query = $this->db->get();
+		// $this->db->select('no_resi, id_pengiriman, id_cust, status_pengiriman, tanggal, posisi, keterangan');
+		// $this->db->from('tracking');
+		// $query = $this->db->get();
+		$query = $this->db->get('view_list_tracking');
 		if ($query->num_rows() > 0) {
 			foreach ($query->result_array() as $row) {
 				$data[] = $row;
 			}
 		}
+
 		$query->free_result();
 		return $data;
 	}

@@ -154,39 +154,7 @@ class Pg_admin extends CI_Controller
 	}
 
 	public function barang()
-	{
-		$jml_barang = 0;
-		$jbarang = $this->mbarang->jumlah_barang();
-		foreach ($jbarang as $value) {
-			$jml_barang = $value['jumlah'];
-		}
-
-		$this->load->library('pagination');
-		
-		$config['base_url'] = base_url().'index.php/pg_admin/barang';
-		$config['total_rows'] = $jml_barang;
-		$config['per_page'] = 10;
-		$config['uri_segment'] = 3;
-		$config['num_links'] = 3;
-		$config['full_tag_open'] = '<p>';
-		$config['full_tag_close'] = '</p>';
-		$config['first_link'] = 'Pertama';
-		$config['first_tag_open'] = '<div>';
-		$config['first_tag_close'] = '</div>';
-		$config['last_link'] = 'Terakhir';
-		$config['last_tag_open'] = '<div>';
-		$config['last_tag_close'] = '</div>';
-		$config['next_link'] = '&gt;';
-		$config['next_tag_open'] = '<div>';
-		$config['next_tag_close'] = '</div>';
-		$config['prev_link'] = '&lt;';
-		$config['prev_tag_open'] = '<div>';
-		$config['prev_tag_close'] = '</div>';
-		$config['cur_tag_open'] = '<b>';
-		$config['cur_tag_close'] = '</b>';
-		
-		$this->pagination->initialize($config);
-		
+	{	
 		$data['judul'] = 'Barang';
 		$data['konten'] = 'admin/barang';
 		$data['aktif'] = 'active';
@@ -248,7 +216,7 @@ class Pg_admin extends CI_Controller
 	{
 		$jml = $this->db->get('view_list_tracking');
 
-		$this->load->library('pagination');
+		/*$this->load->library('pagination');
 		
 		$config['base_url'] = base_url().'index.php/pg_admin/tracking';
 		$config['total_rows'] = $jml->num_rows();
@@ -274,13 +242,14 @@ class Pg_admin extends CI_Controller
 		
 		$this->pagination->initialize($config);
 		
-		$data['paging'] = $this->pagination->create_links();
+		$data['paging'] = $this->pagination->create_links();*/
 
 		$data['judul'] = 'Tracking';
 		$data['konten'] = 'admin/tracking';
 		$data['aktif'] = 'active';
 		$data['module'] = 'tracking';
-		$data['tracking'] = $this->mtracking->ambil_tracking($config['per_page'], $id);
+		// $data['tracking'] = $this->mtracking->ambil_tracking($config['per_page'], $id);
+		$data['tracking'] = $this->mtracking->getAllTracking();
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
 	}

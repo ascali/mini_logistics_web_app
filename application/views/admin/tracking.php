@@ -1,17 +1,17 @@
-<?php
-echo heading($judul, 3);
-?>
-<form method="post" class="form-seacrh">
-	<legend>Operasi</legend>
-	<div class="input-append">
-		<input type="text" placeholder="Cari data">
-		<button type="submit" class="btn">
-			<i class="icon-search"></i>&nbsp;Cari
-		</button>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+	<h1 class="h2"><?php echo heading($judul, 3); ?></h1>
+	<div class="btn-toolbar mb-2 mb-md-0">
+	  <div class="btn-group mr-2">
+		
+	  </div>
 	</div>
-</form>
-<div>
-	<table class="table table-hover" style="border-bottom: 2px solid black; border-top: 1px solid black;">
+</div>
+<div class="d-flex p-2 bd-highlight">
+	<p>Berikut adalah data pengiriman:</p>
+</div>
+
+<div class="table-responsive">
+<table class="table table-striped table-sm" id="dataTable" style="width:100%">
 		<thead>
 			<tr>
 				<th>No.</th>
@@ -33,7 +33,7 @@ echo heading($judul, 3);
 					echo "<td>".$value['nama_cust']."</td>";
 					echo "<td>".anchor('tracking/page_detil/'.$value['no_resi'], 
 						"<i class='icon-th-list icon-white'></i>&nbsp;Detil", 
-						array('class' => 'btn btn-primary'))."</td>";
+						array('class' => ''))."</td>";
 					echo "</tr>";
 					$idx++;
 				}
@@ -42,8 +42,33 @@ echo heading($judul, 3);
 			}
 			?>
 		</tbody>
-	</table>
+</table>
 </div>
-<div class="pagination" style="text-align: center;">
-Halaman: <?php echo $paging; ?>
+
+
+<!-- Modal Tambah -->
+<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>index.php/customer/add">
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Data Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+		<button type="submit" class="btn btn-primary">Simpan</button>
+		<button class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">Batal</button>
+      </div>
+    </div>
+  </div>
 </div>
+</form>
+
+
+
+<!--  -->

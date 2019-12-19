@@ -8,24 +8,32 @@ if (count($tahun) > 0) {
 			<fieldset>
 				<legend>Laporan Bulanan</legend>
 				<label class="label-inline">Pilih Tahun dan Bulan:</label>
-				<select name="cbTahun" class="input-small">
-					<?php
-						foreach ($tahun as $value) {
-							$thn = $value['tahun'];
-							echo "<option value='".$thn."'>".$thn."</option>";
-						}
-					?>
-				</select>
-				<select name="cbBulan" class="input-small">
-					<?php
-						foreach ($bulan as $value) {
-							$bln = $value['tahun'];
-							echo "<option value='".$bln."'>".$bln."</option>";
-						}
-					?>
-				</select>
+				<div class="container row">
+					<div class="col-md-2">
+						<select class="form-control" name="cbTahun" class="input-small">
+							<?php
+								foreach ($tahun as $value) {
+									$thn = $value['tahun'];
+									echo "<option value='".$thn."'>".$thn."</option>";
+								}
+							?>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<select class="form-control" name="cbBulan" class="input-small">
+							<?php
+								foreach ($bulan as $value) {
+									$bln = $value['tahun'];
+									echo "<option value='".$bln."'>".$bln."</option>";
+								}
+							?>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-primary">Lihat Laporan</button>
+					</div>
+				</div>
 			</fieldset>
-			<button type="submit" class="btn btn-primary">Lihat Laporan</button>
 		</form>
 	</div>
 	<div class="well span6">
@@ -33,16 +41,23 @@ if (count($tahun) > 0) {
 			<fieldset>
 				<legend>Laporan Tahunan</legend>
 				<label class="label-inline">Pilih Tahun:</label>
-				<select name="cbTahun1" class="input-small">
-					<?php
-						foreach ($tahun as $value) {
-							$thn = $value['tahun'];
-							echo "<option value='".$thn."'>".$thn."</option>";
-						}
-					?>
-				</select>
+				<div class="container row">
+					<div class="col-md-2">
+						<select class="form-control" name="cbTahun1" class="input-small">
+							<?php
+								foreach ($tahun as $value) {
+									$thn = $value['tahun'];
+									echo "<option value='".$thn."'>".$thn."</option>";
+								}
+							?>
+						</select>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-primary">Lihat Laporan</button>
+					</div>
+				</div>
 			</fieldset>
-			<button type="submit" class="btn btn-primary">Lihat Laporan</button>
 		</form>
 	</div>
 </div>

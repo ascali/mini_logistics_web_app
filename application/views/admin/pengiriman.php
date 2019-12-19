@@ -1,20 +1,20 @@
-<h3>Pengiriman</h3>
-<p>Berikut adalah data pengiriman:</p>
-<form method="post" class="form-seacrh">
-	<legend>Operasi</legend>
-	<div class="input-append">
-		<input type="text" placeholder="Cari data">
-		<button type="submit" class="btn">
-			<i class="icon-search"></i>&nbsp;Cari
-		</button>
-		<a href="javascript:;" role="button" class="btn btn-primary" 
-			onclick="win_popup('<?php echo base_url(); ?>index.php/pengiriman/buat_permintaan_pengiriman', 800, 600)">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+	<h1 class="h2">Pengiriman</h1>
+	<div class="btn-toolbar mb-2 mb-md-0">
+	  <div class="btn-group mr-2">
+		<a href="javascript:void(0)" role="button" class="btn btn-sm btn-outline-primary" 
+			onclick="window.open('<?php echo base_url(); ?>index.php/pengiriman/buat_permintaan_pengiriman', 800, 600)">
 			<i class="icon-plus-sign icon-white"></i>&nbsp;Tambah Data
 		</a>
+	  </div>
 	</div>
-</form>
-<div>
-	<table class="table table-hover">
+</div>
+<div class="d-flex p-2 bd-highlight">
+	<p>Berikut adalah data pengiriman:</p>
+</div>
+
+<div class="table-responsive">
+<table class="table table-striped table-sm" id="dataTable" style="width:100%">
 		<thead>
 			<tr>
 				<th>No. Pengiriman</th>
@@ -62,5 +62,33 @@
 			}
 			?>
 		</tbody>
-	</table>
+</table>
 </div>
+
+
+<!-- Modal Tambah -->
+<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>index.php/customer/add">
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Data Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+		<button type="submit" class="btn btn-primary">Simpan</button>
+		<button class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">Batal</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+
+<!--  -->

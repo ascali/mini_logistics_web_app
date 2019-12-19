@@ -24,7 +24,8 @@ $attrib_name = array(
 	'type' 			=> 'text',
 	'value'			=> $admin_name,
 	'placeholder'	=> 'Nama Admin',
-	'id'			=> 'inputAdminName'
+	'id'			=> 'inputAdminName',
+	'class'			=> 'form-control'
 	);
 echo form_input($attrib_name);
 echo "</div>";
@@ -38,11 +39,13 @@ $attrib_password = array(
 	'type' 			=> 'password',
 	'value'			=> $admin_password,
 	'placeholder'	=> 'Password',
-	'id'			=> 'inputAdminPassword'
+	'id'			=> 'inputAdminPassword',
+	'class'			=> 'form-control'
 	);
 echo form_input($attrib_password);
 echo "</div>";
 echo "</div>";
+echo "<br>";
 //tombol submit
 echo "<div class='control-group'>";
 echo "<div class='controls'>";

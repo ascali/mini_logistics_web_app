@@ -12,7 +12,6 @@
 	<p>Berikut adalah daftar status pengiriman:</p>
 </div>
 
-<h3>Status Pengiriman</h3>
 <div class="table-responsive">
 <table class="table table-striped table-sm" id="dataTable" style="width:100%">
 		<thead>
