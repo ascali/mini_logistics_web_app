@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-	<h1 class="h2"><?php echo heading($judul, 3); ?></h1>
+	<h1 class="h2"><?= $judul; ?></h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 	  <div class="btn-group mr-2">
 		
@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="d-flex p-2 bd-highlight">
-	<p>Berikut adalah data pengiriman:</p>
+	<p>Berikut adalah data tracking:</p>
 </div>
 
 <div class="table-responsive">
