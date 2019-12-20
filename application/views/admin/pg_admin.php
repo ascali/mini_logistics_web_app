@@ -363,6 +363,7 @@
         feather.replace()
       }())
       var url = window.location.origin;
+      var base_url = window.location.origin;
       var lang_indo_datatables = {
           "sProcessing": "Sedang proses...",
           "sLengthMenu": "Menampilkan _MENU_ entri",

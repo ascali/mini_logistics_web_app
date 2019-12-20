@@ -15,7 +15,7 @@ class Mkota extends CI_Model
 	public function getAllKota()
 	{
 		$data = array();
-		$this->db->select('id_kota, nama_provinsi, nama_kota');
+		$this->db->select('id_kota, provinsi.id_provinsi, nama_provinsi, nama_kota');
 		$this->db->from('kota');
 		$this->db->join('provinsi', 'provinsi.id_provinsi = kota.id_provinsi');
 		$query = $this->db->get();
@@ -32,7 +32,7 @@ class Mkota extends CI_Model
 	public function getAllKotaId($id)
 	{
 		$data = array();
-		$this->db->select('id_kota, nama_provinsi, nama_kota');
+		$this->db->select('id_kota, provinsi.id_provinsi, nama_provinsi, nama_kota');
 		$this->db->from('kota');
 		$this->db->join('provinsi', 'provinsi.id_provinsi = kota.id_provinsi');
 		$this->db->where('id_kota', $id);

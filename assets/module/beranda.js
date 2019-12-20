@@ -51,7 +51,7 @@ var table;
 $(document).ready(function() { 
     table = $('#dataTable').DataTable({
         "language": lang_indo_datatables,
-        "deferRender": true,
+        "processing": true,
         "ajax": {
             "url": `${url}/customer/read_json`,
             "type": "GET"
