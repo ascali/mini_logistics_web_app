@@ -73,7 +73,7 @@
         width: 100%;
         position: fixed; 
         background: white;
-        z-index: 99999;
+        z-index: 999;
       }
       .img-nawala {
         width: 100%;
@@ -225,7 +225,7 @@
             </ul>
           </div>
           <div class="col-12 col-md"> 
-            <strong style="font-size: smaller;">PT. Multiartha Retalindo Lestari</strong>
+            <strong style="font-size: 88%;">PT. Multiartha Retalindo Lestari</strong>
             <br>
             <abbr align="justify"><small>Jalan Kemang Pratama Raya, Boulevard Blok B nomor 9 – Rawalumbu, Kota Bekasi</small></abbr>
             <br>
@@ -233,7 +233,6 @@
             <br>
             <small><?= date('Y') ?> &copy;&nbsp;<a href="javascript:void(0)">made with &#10084;</a></small>
             <!-- <small class="d-block mb-3 text-muted">&copy; <?=date('Y');?></small> -->
-            <br>
           </div>
         </div>
       </footer>
@@ -293,6 +292,8 @@
         </div>
       </div>
     </div>
+
+    <br>
 
     <!-- JavaScript -->
     <script src="<?= base_url(); ?>assets/js/jquery-3.4.1.min.js"></script>
