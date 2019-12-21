@@ -108,8 +108,9 @@
         <div class="control-group">
 			<label class="control-label" for="nama_provinsi">Nama Provinsi</label>
 			<div class="controls">
-				<input type="hidden" name="id_provinsi" id="id_provinsi">
+				<input type="hidden" name="id_provinsi" id="id_provinsi_input">
 				<input type="text" class="form-control" id="nama_provinsi" name="nama_provinsi" placeholder="Provinsi">
+				<div class="invalid-feedback"></div>
 			</div>
 		</div>
       </div>

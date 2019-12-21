@@ -11,18 +11,10 @@ class Provinsi extends CI_Controller
 		$this->load->database();
 	}
 
-	public function add()
-	{
-		$nama_provinsi = $this->input->post('inputNamaProvinsi');
-		$this->mkota->addProvinsi($nama_provinsi);
-		$this->session->set_flashdata('message', 'Provinsi sudah dibuat');
-		redirect('pg_admin/kota_provinsi', 'refresh');
-	}
-
 	public function read_json(){
 		$id = $this->input->get('id');
 		if (empty($id)) {
-			$query = $this->db->query("SELECT * FROM provinsi ORDER BY id_provinsi ASC");
+			$query = $this->db->query("SELECT * FROM provinsi ORDER BY nama_provinsi ASC");
 			$data = $query->result_array();
 		} else {
 			$query = $this->db->query("SELECT * FROM provinsi WHERE id_provinsi = $id ");
@@ -89,6 +81,7 @@ class Provinsi extends CI_Controller
 
 		if($data['status'] === FALSE)
 		{
+			header('Content-type: application/json');
 			echo json_encode($data);
 			exit();
 		}

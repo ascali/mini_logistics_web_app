@@ -13,7 +13,7 @@ $(document).ready(function(){
 
         $('#btnTambahProvinsi').on('click keypress', function() {
             btnSubmit = 'tambah';
-            $("form").trigger('reset');
+            init_provinsi();
             $('#modalTambahProvinsi').modal('show');
         });
 
@@ -57,6 +57,11 @@ $(document).ready(function(){
 });
 
 /*Provinsi*/
+    function init_provinsi(){
+        $("form").trigger('reset');
+        $('input').removeClass('is-invalid');
+        $('input').next().text('');
+    }
 
     function show_provinsi(){
             tableDataProvinsi.clear().destroy();
@@ -89,9 +94,19 @@ $(document).ready(function(){
                 type: 'POST',
                 data: $('#form_provinsi').serialize(),
                 success: function(res) {
-                    alert('Berhasil submit data!');
-                    $('#modalTambahProvinsi').modal('hide');
-                    tableDataProvinsi.ajax.reload(null, false);
+
+                    if (res.status==1) {
+                        alert('Berhasil submit data!');
+                        $('#modalTambahProvinsi').modal('hide');
+                        if (btnSubmit==='update_json') {
+                            tableDataProvinsi.ajax.reload(null, false);
+                        }
+                    } else {
+                        for (var i=0; i < res.inputerror.length; i++) {
+                            $('[name="'+res.inputerror[i]+'"]').addClass('is-invalid');
+                            $('[name="'+res.inputerror[i]+'"]').next().text(res.error_string[i]);
+                        }
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('Gagal submit data!');
@@ -104,13 +119,13 @@ $(document).ready(function(){
 
     function edit_provinsi(id){
         btnSubmit = 'edit';
-        $("form").trigger('reset');
+        init_provinsi();
         $('#modalTambahProvinsi').modal('show');
         $.ajax({
             url: `${base_url}/provinsi/read_json?id=${id}`,
             type: 'GET',
             success: function(res) {
-                $('#id_provinsi').val(res.data.ID_PROVINSI);
+                $('#id_provinsi_input').val(res.data.ID_PROVINSI);
                 $('#nama_provinsi').val(res.data.NAMA_PROVINSI);
             },
             error: function(jqXHR, textStatus, errorThrown) {
