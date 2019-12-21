@@ -18,10 +18,10 @@
     <link href="<?= base_url(); ?>assets/js/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="<?= base_url(); ?>assets/img/nawala.jpg" sizes="180x180">
-    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.jpg" sizes="32x32" type="image/png">
-    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.jpg" sizes="16x16" type="image/png"> 
-    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.jpg"> 
+    <link rel="apple-touch-icon" href="<?= base_url(); ?>assets/img/nawala.png" sizes="180x180">
+    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.png" sizes="16x16" type="image/png"> 
+    <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.png"> 
 
     <style>
       .bd-placeholder-img {
