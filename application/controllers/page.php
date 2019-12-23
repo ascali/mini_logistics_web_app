@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Page extends CI_Controller
 {

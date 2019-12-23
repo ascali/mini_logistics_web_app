@@ -84,7 +84,7 @@
   </head>
   <body class="bg">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm header-fixed">
-      <h5 class="my-0 mr-md-auto font-weight-normal" style="font-family: serif;"><b><font color="red">NAW</font><font color="#2d87d6">ALA</font> <font color="green">Express Courier</font></b></h5>
+      <h5 class="my-0 mr-md-auto font-weight-normal" style=""><b><font color="red">NAW</font><font color="#2d87d6">ALA</font> <font color="green">Express Courier</font></b></h5>
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-<?php if ($this->uri->segment(2)=='') echo $aktif; ?>" href="<?= base_url(); ?>">Beranda</a>
         <a class="p-2 text-<?php if ($this->uri->segment(2)=='layanan') echo $aktif; ?>" href="<?= base_url(); ?>index.php/page/layanan">Layanan</a>
@@ -126,9 +126,9 @@
             <img src="<?= base_url(); ?>assets/img/nawala.png" class="img-nawala" />
           </div>
           <div class="col-md-8">
-            <h2 style="color: white; text-shadow: 2px 2px 4px #000000;">PT. MULTI ARTHA RETALINDO LESTARI</h2>
-            <h3 style="color: white; text-shadow: 2px 2px 4px #000000;">NAWALA EXPRESS COURIER</h3>
-            <h4 style="color: white; text-shadow: 2px 2px 4px #000000;">Cepat, Fresh & Hygienic</h4>
+            <h2 style="color: black; text-shadow: 2px 2px 4px #000000;">PT. MULTI ARTHA RETALINDO LESTARI</h2>
+            <h3 style="color: black; text-shadow: 2px 2px 4px #000000;">NAWALA EXPRESS COURIER</h3>
+            <h4 style="color: black; text-shadow: 2px 2px 4px #000000;">Cepat, Fresh & Hygienic</h4>
           </div>
         </div>
       </div>
@@ -152,14 +152,14 @@
             }
             ?> 
             <?php
-            $masuk = $this->session->userdata('status');
-            if ($masuk != "masuk") {
-              echo "<a class='list-group-item list-group-item-action' href='#loginModal' role='button' data-toggle='modal'>Tracking Area";
-            } else {
+            // $masuk = $this->session->userdata('status');
+            // if ($masuk != "masuk") {
+              // echo "<a class='list-group-item list-group-item-action' href='#loginModal' role='button' data-toggle='modal'>Tracking Area";
+            // } else {
               $nama = $this->session->userdata('nama_cust');
               $active = ($this->uri->segment(2)=='tracking') ? $aktif : '';
               echo "<a href='".base_url()."index.php/page/tracking' class='list-group-item list-group-item-action ".$active."'>Tracking Area</a>";
-            }
+            // }
             ?>
             <a class="list-group-item list-group-item-action <?php if ($this->uri->segment(2)=='biaya_pengiriman') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/page/biaya_pengiriman">Informasi Biaya</a>
           </div>

@@ -1,6 +1,6 @@
 <?php
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Mdetilpengiriman extends CI_Controller
 {

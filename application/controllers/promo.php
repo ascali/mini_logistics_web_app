@@ -1,6 +1,6 @@
 <?php
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Promo extends CI_Controller
 {

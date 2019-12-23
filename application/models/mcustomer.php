@@ -1,6 +1,6 @@
 <?php
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Mcustomer extends CI_Model
 {
@@ -99,6 +99,40 @@ class Mcustomer extends CI_Model
 		$this->db->where('password_cust', $password);
 		$this->db->limit(1);
 		$query = $this->db->get('customer');
+		$this->session->set_userdata('lastquery', $this->db->last_query());
+		if ($query->num_rows() > 0) {
+			$row = $query->row_array();
+			return $row;
+		} else {
+			$this->session->set_flashdata('error', 'Maaf, silahkan coba lagi!');
+			return array();
+		}
+	}
+
+	function validasi_cabang($email, $password)
+	{
+		$this->db->select('id_cabang, email_cabang, password_cabang, nama_cabang');
+		$this->db->where('email_cabang', $email);
+		$this->db->where('password_cabang', $password);
+		$this->db->limit(1);
+		$query = $this->db->get('cabang');
+		$this->session->set_userdata('lastquery', $this->db->last_query());
+		if ($query->num_rows() > 0) {
+			$row = $query->row_array();
+			return $row;
+		} else {
+			$this->session->set_flashdata('error', 'Maaf, silahkan coba lagi!');
+			return array();
+		}
+	}
+
+	function validasi_agen($email, $password)
+	{
+		$this->db->select('id_agen, email_agen, password_agen, nama_agen');
+		$this->db->where('email_agen', $email);
+		$this->db->where('password_agen', $password);
+		$this->db->limit(1);
+		$query = $this->db->get('agen');
 		$this->session->set_userdata('lastquery', $this->db->last_query());
 		if ($query->num_rows() > 0) {
 			$row = $query->row_array();

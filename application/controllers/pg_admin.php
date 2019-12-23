@@ -1,6 +1,6 @@
 <?php 
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Pg_admin extends CI_Controller
 {
@@ -250,6 +250,17 @@ class Pg_admin extends CI_Controller
 		$data['module'] = 'tracking';
 		// $data['tracking'] = $this->mtracking->ambil_tracking($config['per_page'], $id);
 		$data['tracking'] = $this->mtracking->getAllTracking();
+		$this->load->vars($data);
+		$this->load->view('admin/pg_admin', $data, FALSE);
+	}
+
+	public function cabang_agen(){
+		$data['judul'] = 'Cabang / Agen';
+		$data['konten'] = 'admin/cabang_agen';
+		$data['aktif'] = 'active';
+		$data['module'] = 'cabang_agen';
+		// $data['cabang_agen'] = $this->mcustomer->getAllCustomer();
+		// $data['bidang'] = $this->mbidang->getAllBidang();
 		$this->load->vars($data);
 		$this->load->view('admin/pg_admin', $data, FALSE);
 	}

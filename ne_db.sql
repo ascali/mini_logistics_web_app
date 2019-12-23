@@ -587,6 +587,39 @@ CREATE TABLE IF NOT EXISTS `view_surat_pengiriman` (
 );
 -- --------------------------------------------------------
 
+
+-- -------------------------------------------------------------
+CREATE TABLE `cabang` (
+  `id_cabang` INT(11) NOT NULL AUTO_INCREMENT,
+  `nama_cabang` VARCHAR(50) NULL DEFAULT NULL,
+  `password_cabang` VARCHAR(50) NULL DEFAULT NULL,
+  `email_cabang` VARCHAR(50) NULL DEFAULT NULL,
+  `no_telp_cabang` VARCHAR(50) NULL DEFAULT NULL,
+  `ID_KOTA` INT(11) NOT NULL,
+  `alamat_cabang` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_cabang`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `agen` (
+  `id_agen` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_cabang` INT(11) NULL DEFAULT NULL,
+  `nama_agen` VARCHAR(50) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+  `password_agen` VARCHAR(50) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+  `email_agen` VARCHAR(250) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+  `no_telp_agen` VARCHAR(50) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+  `ID_KOTA` INT(11) NULL DEFAULT NULL,
+  `alamat_agen` TEXT NULL COLLATE 'latin1_swedish_ci',
+  PRIMARY KEY (`id_agen`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+
+
 --
 -- Structure for view `view_barang`
 --

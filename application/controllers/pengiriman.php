@@ -1,6 +1,6 @@
 <?php
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Pengiriman extends CI_Controller
 {
@@ -88,7 +88,7 @@ class Pengiriman extends CI_Controller
 		$nama = $this->input->post('txtNamaPenerima');
 		$tujuan = $this->input->post('txtTujuanPengiriman');
 		$alamat = $this->input->post('txtAlamatPenerima');
-		$berat = "null";
+		$berat = $this->input->post('txtBeratPengiriman');
 		$no_resi = $this->mtracking->generate_no_resi();
 		$date = date('Y-m-d');
 		$this->mpengiriman->insert($id, $id_biaya, $tgl, $biaya, $nama, $tujuan, $alamat, $berat);	

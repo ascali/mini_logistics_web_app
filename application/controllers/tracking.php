@@ -1,6 +1,6 @@
 <?php
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Tracking extends CI_Controller
 {
@@ -30,6 +30,18 @@ class Tracking extends CI_Controller
 		$data['status'] = $this->mstatus->getAllStatus();
 		$data['tracking'] = $this->mtracking->detil_tracking($no_resi);
 		$this->load->view('admin/pg_admin', $data);
+	}
+
+	public function page_detil_resi()
+	{
+		$no_resi = $this->input->get('no_resi');
+		$data['judul'] = 'Detil Tracking';
+		$data['konten'] = 'guest/det_tracking';
+		$data['aktif'] = 'active';
+		$data['detil_barang'] = $this->mtracking->detil_barang_user($no_resi);
+		$data['detil_pengiriman'] = $this->mtracking->detil_pengiriman_user($no_resi);
+		$data['tracking'] = $this->mtracking->detil_tracking($no_resi);
+		$this->load->view('guest/page', $data);
 	}
 
 	public function perbarui_data()

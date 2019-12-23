@@ -1,6 +1,6 @@
 <?php 
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Mloginadmin extends CI_Model
 {

@@ -185,7 +185,7 @@
       <!-- <input <center></center>lass="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="<?php echo base_url(); ?>index.php/pg_admin/logout"><?= $this->session->userdata('admin_name'); ?> | <span data-feather="log-out"></span> Log Out</a>
+          <a class="nav-link" href="<?php echo base_url(); ?>index.php/cabang/logout"><?= $this->session->userdata('nama_cabang'); ?> | <span data-feather="log-out"></span> Log Out</a>
         </li>
       </ul>
     </nav>
@@ -196,7 +196,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/">
                   <span data-feather="home"></span>
                   Beranda
                 </a>
@@ -211,85 +211,12 @@
               </h6>
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='kota_provinsi') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/kota_provinsi">
+                  <a class="nav-link <?php if ($this->uri->segment(2)=='agen') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/agen">
                     <span data-feather="compass"></span>
-                    Kota & Provinsi
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='bidang_kerja') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/bidang_kerja">
-                    <span data-feather="layers"></span>
-                    Bidang Kerja
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='status') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/status">
-                    <span data-feather="repeat"></span>
-                    Status Pengiriman
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='biaya') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/biaya">
-                    <span data-feather="tag"></span>
-                    Biaya Pengiriman
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='jenis_barang') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/jenis_barang">
-                    <span data-feather="server"></span>
-                    Jenis Barang
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='barang') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/barang">
-                    <span data-feather="package"></span>
-                    Barang
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='customer') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/customer">
-                    <span data-feather="users"></span>
-                    Customer
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='cabang_agen') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/cabang_agen">
-                    <span data-feather="airplay"></span>
-                    Cabang / Agen
+                    Agen
                   </a>
                 </li>
               </ul>
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  Orders
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Products
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="users"></span>
-                  Customers
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Integrations
-                </a>
-              </li> -->
-            
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>TRANSAKSI</span>
@@ -299,13 +226,13 @@
             </h6>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='pengiriman') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/pengiriman">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='pengiriman') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/pengiriman">
                   <i data-feather="truck"></i>
                   Pengiriman
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='tracking') echo $aktif; ?>"  href="<?php echo base_url(); ?>index.php/pg_admin/tracking">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='tracking') echo $aktif; ?>"  href="<?php echo base_url(); ?>index.php/cabang/tracking">
                   <i data-feather="send"></i>
                   Tracking
               </a>
@@ -320,16 +247,10 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='admin') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/admin">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='admin') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/admin">
                   <i data-feather="settings"></i>
                   Kelolah Otorisasi
               </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='laporan') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/pg_admin/laporan">
-                  <i data-feather="file-text"></i>
-                  Laporan
-                </a>
               </li>
             </ul>
           </div>

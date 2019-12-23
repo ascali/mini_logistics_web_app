@@ -1,6 +1,6 @@
 <?php
 /**
-* @author Thony Hermawan
+* @author Ascaliko
 */
 class Mtracking extends CI_Model
 {
@@ -140,6 +140,14 @@ class Mtracking extends CI_Model
 		$query = $this->db->get_where('view_det_tracking', $param);
 		return $query->result_array();
 	}
+
+	public function detil_barang_user($no_resi)
+	{
+		// view_barang_tracking
+		$param = array('no_resi' => $no_resi/*, 'id_cust' => $id_cust*/);
+		$query = $this->db->get_where('view_det_tracking', $param);
+		return $query->result_array();
+	}
 	
 	public function detil_pengiriman($id_cust, $no_resi)
 	{
@@ -149,6 +157,15 @@ class Mtracking extends CI_Model
 		$query = $this->db->query("SELECT * FROM view_pengiriman vp 
 				JOIN view_history_pengiriman vhp ON vp.id_pengiriman=vhp.id_pengiriman
 				WHERE vhp.no_resi = '$no_resi' AND vhp.id_cust = $id_cust ");
+		return $query->result_array();
+	}
+	
+	public function detil_pengiriman_user($no_resi)
+	{
+		// view_detil_pengiriman_tracking
+		$query = $this->db->query("SELECT * FROM view_pengiriman vp 
+				JOIN view_history_pengiriman vhp ON vp.id_pengiriman=vhp.id_pengiriman
+				WHERE vhp.no_resi = '$no_resi' ");
 		return $query->result_array();
 	}
 }

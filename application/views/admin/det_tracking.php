@@ -12,7 +12,7 @@ if (count($tracking) > 0) {
 	}
 ?>
 <label class="label-inline" for="txtNoResi">Nomer Resi: &nbsp;
-	<input type="text" id="txtNoResi" name="txtNoResi" value="<?php echo $no_resi; ?>" disabled>
+	<input type="text" class="form-control" id="txtNoResi" name="txtNoResi" value="<?php echo $no_resi; ?>" disabled>
 	<input type="hidden" id="txtIdPengiriman" name="txtIdPengiriman" value="<?php echo $id_pengiriman; ?>" disabled>
 	<input type="hidden" id="txtIdCust" name="txtIdCust" value="<?php echo $id_cust; ?>" disabled>
 </label>
@@ -58,33 +58,37 @@ if (count($tracking) > 0) {
 }
 ?>
 <div class="form-actions">
-	<button class="btn btn-primary" onclick="javascript:window.back();">
+	<button class="btn btn-primary" onclick="javascript:window.history.back();">
 		<i class="icon-chevron-left icon-white"></i>&nbsp;Kembali
 	</button>
 </div>
 
 <!-- Modal -->
 <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>index.php/tracking/perbarui_data">
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-		<h3 id="myModalLabel">Update Status Pengiriman</h3>
-	</div>
-	<div class="modal-body">
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Status Pengiriman</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 		<input type="hidden" id="txtNoResi" name="txtNoResi" value="<?php echo $no_resi; ?>">
 		<input type="hidden" id="txtIdPengiriman" name="txtIdPengiriman" value="<?php echo $id_pengiriman; ?>">
 		<input type="hidden" id="txtIdCust" name="txtIdCust" value="<?php echo $id_cust; ?>">
 		<div class="control-group">
 			<label class="control-label" for="inputTanggal">Tanggal</label>
 			<div class="controls">
-				<input type="text" id="inputTanggal" class="datepicker input-medium" name="txtTanggalTracking" placeholder="YYYY-MM-DD">
+				<input class="form-control" type="date" id="inputTanggal" class="datepicker input-medium" name="txtTanggalTracking" placeholder="YYYY-MM-DD">
 				<span class="add-on"><i class="icon-calendar"></i>&nbsp;</span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="inputStatus">Status Pengiriman</label>
 			<div class="controls">
-				<select id="inputStatus" name="cbStatusPengiriman">
+				<select class="form-control" id="inputStatus" name="cbStatusPengiriman">
 					<?php
 					if (empty($status)) {
 						echo "<option>--pilih status pengiriman--</option>";
@@ -100,23 +104,25 @@ if (count($tracking) > 0) {
 		<div class="control-group">
 			<label class="control-label" for="inputPosisi">Posisi</label>
 			<div class="controls">
-				<input type="text" id="inputPosisi" name="txtPosisi" placeholder="Posisi">
+				<input class="form-control" type="text" id="inputPosisi" name="txtPosisi" placeholder="Posisi">
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="inputKeterangan">Keterangan</label>
 			<div class="controls">
-				<textarea id="inputKeterangan" name="txtKeterangan" placeholder="Keterangan"></textarea>
+				<textarea class="form-control" id="inputKeterangan" name="txtKeterangan" placeholder="Keterangan"></textarea>
 			</div>
 		</div>
-	</div>
-	<div class="modal-footer">
+      </div>
+      <div class="modal-footer">
 		<button class="btn" data-dismiss="modal" aria-hidden="true">
 			<i class="icon-remove"></i>&nbsp;Batal
 		</button>
 		<button type="submit" class="btn btn-primary">
 			<i class="icon-check icon-white"></i>&nbsp;Simpan
 		</button>
-	</div>
+      </div>
+    </div>
+  </div>
 </div>
 </form>

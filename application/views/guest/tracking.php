@@ -2,17 +2,18 @@
 echo heading('Tracking Pengiriman Barang', 3); 
 echo "<p>Masukkan nomer resi untuk melakukan <i>tracking</i> dalam kolom dibawah ini.</p>";
 ?>
-<!-- <form class="form-horizontal" method="post" action="">
+
+<form method="GET" class="form-horizontal" action="<?php echo base_url(); ?>index.php/tracking/page_detil_resi">
 	<div class="control-group">
 		<label class="control-label" for="appendedInputButton">Cari: </label>
 		<div class="controls">
 			<div class="input-append">
-				<input class="span2" id="appendedInputButton" type="text" placeholder="No. Resi">
+				<input class="span2" id="appendedInputButton" type="text" name="no_resi" placeholder="No. Resi">
 				<button class="btn btn-primary" type="submit">Cari</button>
 			</div>
 		</div>
 	</div>
-</form> -->
+</form>
 <fieldset>
 	<legend>Riwayat Pengiriman</legend>
 	<table class="table table-hover">

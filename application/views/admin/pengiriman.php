@@ -45,12 +45,12 @@
 					echo "<td>";
 					//echo anchor('pengiriman/detil/'.$list['id_pengiriman'], 'Detil', '');
 					?>
-					<a href="javascript:;" onclick="win_popup('<?php echo base_url(); ?>index.php/pengiriman/detil/<?php echo $list['id_pengiriman']; ?>', 800, 600)">Detil</a>
+					<a href="javascript:;" onclick="window.open('<?php echo base_url(); ?>index.php/pengiriman/detil/<?php echo $list['id_pengiriman']; ?>', 800, 600)">Detil</a>
 					<?php
 					echo nbs(2)."/".nbs(2);
 					echo anchor('pengiriman/edit/'.$list['id_pengiriman'], 'Ubah', '');
 					?>
-					<!--<a href="javascript:;" onclick="win_popup('<?php echo base_url(); ?>index.php/pengiriman/edit/<?php echo $list['id_pengiriman']; ?>', 500, 435)">Ubah</a>-->
+					<!--<a href="javascript:;" onclick="window.open('<?php echo base_url(); ?>index.php/pengiriman/edit/<?php echo $list['id_pengiriman']; ?>', 500, 435)">Ubah</a>-->
 					<?php
 					echo nbs(2)."/".nbs(2);
 					echo anchor('pengiriman/hapus/'.$list['id_pengiriman'], 'Hapus', '');
