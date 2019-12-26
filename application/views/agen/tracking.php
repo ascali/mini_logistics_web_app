@@ -31,7 +31,7 @@
 					echo "<td>".$value['no_resi']."</td>";
 					echo "<td>".$value['id_pengiriman']."</td>";
 					echo "<td>".$value['nama_cust']."</td>";
-					echo "<td>".anchor('tracking/page_detilCabang/'.$value['no_resi'], 
+					echo "<td>".anchor('tracking/page_detilAgen/'.$value['no_resi'], 
 						"<i class='icon-th-list icon-white'></i>&nbsp;Detil", 
 						array('class' => ''))."</td>";
 					echo "</tr>";

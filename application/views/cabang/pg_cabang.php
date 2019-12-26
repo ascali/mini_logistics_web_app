@@ -247,9 +247,9 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='admin') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/admin">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='data') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/data">
                   <i data-feather="settings"></i>
-                  Kelolah Otorisasi
+                  Setting Data
               </a>
               </li>
             </ul>

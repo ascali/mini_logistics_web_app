@@ -21,6 +21,12 @@ class Kota extends CI_Controller
 		header('Content-type: application/json');
 		echo json_encode($json, JSON_PRETTY_PRINT);
 	}
+	public function read_provinsi_json(){
+		$data = $this->mkota->getAllKotaProvinsiId($this->input->get('id'));
+		$json = array('data'=>$data);
+		header('Content-type: application/json');
+		echo json_encode($json, JSON_PRETTY_PRINT);
+	}
 
 	public function create_json(){
 		$id_provinsi = $this->input->post('id_provinsi');

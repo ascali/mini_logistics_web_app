@@ -51,6 +51,26 @@ class Pengiriman extends CI_Controller
 		$this->load->view('admin/pg_admin', $data, FALSE);
 	}
 
+	public function edit_cabang($id)
+	{
+		$data['judul'] = 'Edit Data Pengiriman';
+		$data['konten'] = 'cabang/edit_pengiriman';
+		$data['pengiriman'] = $this->mpengiriman->getPengirimanById($id);
+		$data['kota'] = $this->mkota->getAllKota();
+		$this->load->vars($data);
+		$this->load->view('cabang/pg_cabang', $data, FALSE);
+	}
+
+	public function edit_agen($id)
+	{
+		$data['judul'] = 'Edit Data Pengiriman';
+		$data['konten'] = 'agen/edit_pengiriman';
+		$data['pengiriman'] = $this->mpengiriman->getPengirimanById($id);
+		$data['kota'] = $this->mkota->getAllKota();
+		$this->load->vars($data);
+		$this->load->view('agen/pg_admin', $data, FALSE);
+	}
+
 	public function hapus($id)
 	{
 		$this->mpengiriman->delete($id);
@@ -70,6 +90,34 @@ class Pengiriman extends CI_Controller
 		//echo $id." ".$tgl." ".$nama." ".$tujuan." ".$alamat;
 		$this->session->set_flashdata('message', 'Data pengiriman sudah diubah');
 		redirect('pg_admin/pengiriman', 'refresh');
+	}
+
+	public function updateCabang()
+	{
+		$id 			= $this->input->post('txtNoPengiriman');
+		$tgl			= $this->input->post('txtTglPengiriman');
+		$nama			= $this->input->post('txtNamaPenerima');
+		$tujuan			= $this->input->post('txtTujuanPengiriman');
+		$alamat			= $this->input->post('txtAlamatPenerima');
+		$this->mpengiriman->update($id, $tgl, $nama, $tujuan, $alamat);
+		//echo "Perubahan sudah disimpan, klik <a href='javascript:window.close();'>disini</a> untuk keluar.";
+		//echo $id." ".$tgl." ".$nama." ".$tujuan." ".$alamat;
+		$this->session->set_flashdata('message', 'Data pengiriman sudah diubah');
+		redirect('cabang/pengiriman', 'refresh');
+	}
+
+	public function updateAgen()
+	{
+		$id 			= $this->input->post('txtNoPengiriman');
+		$tgl			= $this->input->post('txtTglPengiriman');
+		$nama			= $this->input->post('txtNamaPenerima');
+		$tujuan			= $this->input->post('txtTujuanPengiriman');
+		$alamat			= $this->input->post('txtAlamatPenerima');
+		$this->mpengiriman->update($id, $tgl, $nama, $tujuan, $alamat);
+		//echo "Perubahan sudah disimpan, klik <a href='javascript:window.close();'>disini</a> untuk keluar.";
+		//echo $id." ".$tgl." ".$nama." ".$tujuan." ".$alamat;
+		$this->session->set_flashdata('message', 'Data pengiriman sudah diubah');
+		redirect('agen/pengiriman', 'refresh');
 	}
 
 	public function buat_pengiriman_cust()

@@ -293,6 +293,8 @@ CREATE TABLE IF NOT EXISTS `pengiriman` (
   `TUJUAN_PENGIRIMAN` varchar(50) DEFAULT NULL,
   `ALAMAT_PENERIMA` varchar(100) DEFAULT NULL,
   `BERAT_PENGIRIMAN` decimal(8,2) DEFAULT NULL,
+  `id_cabang` int(11) DEFAULT NULL,
+  `id_agen` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_PENGIRIMAN`),
   KEY `FK_PENGIRIMAN_MEMPUNYAI_BIAYA_PENGIRIMAN` (`ID_BIAYA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -715,8 +717,8 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_list_tracking`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_list_tracking` AS select distinct `t`.`NO_RESI` AS `no_resi`,`t`.`ID_PENGIRIMAN` AS `id_pengiriman`,`c`.`ID_CUST` AS `id_cust`,`c`.`NAMA_CUST` AS `nama_cust` from (`customer` `c` join `tracking` `t`) where (`c`.`ID_CUST` = `t`.`ID_CUST`) order by `t`.`NO_RESI`;
-
+-- CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_list_tracking` AS select distinct `t`.`NO_RESI` AS `no_resi`,`t`.`ID_PENGIRIMAN` AS `id_pengiriman`,`c`.`ID_CUST` AS `id_cust`,`c`.`NAMA_CUST` AS `nama_cust` from (`customer` `c` join `tracking` `t`) where (`c`.`ID_CUST` = `t`.`ID_CUST`) order by `t`.`NO_RESI`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_list_tracking` AS select distinct `p`.`id_cabang`, `p`.`id_agen`, `t`.`NO_RESI` AS `no_resi`,`t`.`ID_PENGIRIMAN` AS `id_pengiriman`,`c`.`ID_CUST` AS `id_cust`,`c`.`NAMA_CUST` AS `nama_cust` from (`customer` `c` join `tracking` `t` join pengiriman p) where (`c`.`ID_CUST` = `t`.`ID_CUST` AND t.ID_PENGIRIMAN=p.ID_PENGIRIMAN) order by `t`.`NO_RESI`;
 -- --------------------------------------------------------
 
 --
@@ -724,7 +726,8 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_pengiriman`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pengiriman` AS select `p`.`ID_PENGIRIMAN` AS `id_pengiriman`,`p`.`NAMA_PENERIMA` AS `nama_penerima`,`p`.`TGL_PENGIRIMAN` AS `tgl_pengiriman`,`k`.`NAMA_KOTA` AS `kota_tujuan`,`p`.`BIAYA_PENGIRIMAN` AS `biaya_pengiriman`,`p`.`TUJUAN_PENGIRIMAN` AS `tujuan_pengiriman`,`p`.`ALAMAT_PENERIMA` AS `alamat_penerima`,`p`.`BERAT_PENGIRIMAN` AS `berat_pengiriman` from ((`pengiriman` `p` join `biaya_pengiriman` `b`) join `kota` `k`) where ((`p`.`ID_BIAYA` = `b`.`ID_BIAYA`) and (`b`.`ID_KOTA_TUJUAN` = `k`.`ID_KOTA`));
+-- CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pengiriman` AS select `p`.`ID_PENGIRIMAN` AS `id_pengiriman`,`p`.`NAMA_PENERIMA` AS `nama_penerima`,`p`.`TGL_PENGIRIMAN` AS `tgl_pengiriman`,`k`.`NAMA_KOTA` AS `kota_tujuan`,`p`.`BIAYA_PENGIRIMAN` AS `biaya_pengiriman`,`p`.`TUJUAN_PENGIRIMAN` AS `tujuan_pengiriman`,`p`.`ALAMAT_PENERIMA` AS `alamat_penerima`,`p`.`BERAT_PENGIRIMAN` AS `berat_pengiriman` from ((`pengiriman` `p` join `biaya_pengiriman` `b`) join `kota` `k`) where ((`p`.`ID_BIAYA` = `b`.`ID_BIAYA`) and (`b`.`ID_KOTA_TUJUAN` = `k`.`ID_KOTA`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pengiriman` AS SELECT `p`.`id_cabang` AS `id_cabang`, `p`.`id_agen` AS `id_agen`, `p`.`ID_PENGIRIMAN` AS `id_pengiriman`,`p`.`NAMA_PENERIMA` AS `nama_penerima`,`p`.`TGL_PENGIRIMAN` AS `tgl_pengiriman`,`k`.`NAMA_KOTA` AS `kota_tujuan`,`p`.`BIAYA_PENGIRIMAN` AS `biaya_pengiriman`,`p`.`TUJUAN_PENGIRIMAN` AS `tujuan_pengiriman`,`p`.`ALAMAT_PENERIMA` AS `alamat_penerima`,`p`.`BERAT_PENGIRIMAN` AS `berat_pengiriman` from ((`pengiriman` `p` join `biaya_pengiriman` `b`) join `kota` `k`) where ((`p`.`ID_BIAYA` = `b`.`ID_BIAYA`) and (`b`.`ID_KOTA_TUJUAN` = `k`.`ID_KOTA`));
 
 -- --------------------------------------------------------
 

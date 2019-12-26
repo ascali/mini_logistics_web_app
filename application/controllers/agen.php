@@ -24,6 +24,47 @@ class Agen extends CI_Controller
 		}
 	}
 
+	public function data()
+	{
+		$masuk = $this->session->userdata('status');
+		if ($masuk != "masuk") {
+			$this->login();
+		} else {
+			$data['judul'] = 'Data Agen';
+			$data['aktif'] = 'active';
+			$data['module'] = 'agen_data';
+			$data['konten'] = 'agen/data';
+			$this->load->view('agen/pg_agen', $data);
+		}
+	}
+
+	public function pengiriman()
+	{
+		$id_agen = $this->session->userdata('id_agen');
+		$data['judul'] = 'Pengiriman';
+		$data['konten'] = 'agen/pengiriman';
+		$data['aktif'] = 'active';
+		$data['module'] = 'pengiriman';
+		$data['pengiriman'] = $this->mpengiriman->getAllPengirimanAgen($id_agen);
+		$this->load->vars($data);
+		$this->load->view('agen/pg_agen', $data, FALSE);
+	}
+
+	public function tracking($id = NULL)
+	{
+		$id_agen = $this->session->userdata('id_agen');
+		$jml = $this->db->get('view_list_tracking');
+
+		$data['judul'] = 'Tracking';
+		$data['konten'] = 'agen/tracking';
+		$data['aktif'] = 'active';
+		$data['module'] = 'tracking';
+
+		$data['tracking'] = $this->mtracking->getAllTrackingAgen($id_agen);
+		$this->load->vars($data);
+		$this->load->view('agen/pg_agen', $data, FALSE);
+	}
+
 	public function login()
 	{
 		$data['judul'] = 'Login Halaman Agen';
@@ -43,6 +84,8 @@ class Agen extends CI_Controller
 				'email_agen' => $row['email_agen'],
 				'password_agen' => $row['password_agen'],
 				'nama_agen' => $row['nama_agen'],
+				'id_kota' => $row['ID_KOTA'],
+				'id_provinsi' => $row['ID_PROVINSI'],
 				'status' => 'masuk'
 			);
 			$this->session->set_userdata($item);

@@ -2,7 +2,7 @@
 	<h1 class="h2"><?= $judul; ?></h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 	  <div class="btn-group mr-2">
-		<a href="#myModal" id="btnTambah" role="button" class="btn btn-sm btn-outline-primary" data-toggle="modal">
+		<a href="#myModal" id="btnTambahAgen" role="button" class="btn btn-sm btn-outline-primary" data-toggle="modal">
 			<i class="icon-plus-sign icon-white"></i>&nbsp;Tambah Data Agen
 		</a>
 	  </div>
@@ -65,10 +65,10 @@
 				<div class="control-group">
 					<label class="control-label" for="txtKotaCust">Kota</label>
 					<div class="controls">
-						<input type="text" class="form-control" readonly="" id="nama_kota_agen" name="NAMA_KOTA_AGEN">
-						<input type="hidden" id="id_kota_agen" name="ID_KOTA_AGEN">
-						<!-- <select class="form-control" id="id_kota_agen" name="ID_KOTA_AGEN" placeholder="Kota" readonly> -->
-						<!-- </select> -->
+						<!-- <input type="text" class="form-control" readonly="" id="nama_kota_agen" name="NAMA_KOTA_AGEN"> -->
+						<!-- <input type="hidden" id="id_kota_agen" name="ID_KOTA_AGEN"> -->
+						<select class="form-control" id="id_kota_agen" name="ID_KOTA_AGEN" placeholder="Kota">
+						</select>
 					</div>
 				</div>
 				<div class="control-group">
@@ -104,4 +104,6 @@
 
 <script type="text/javascript">
 	var id_cabang = '<?= $this->session->userdata('id_cabang'); ?>';
+	var id_kota = '<?= $this->session->userdata('id_kota'); ?>';
+	var id_provinsi = '<?= $this->session->userdata('id_provinsi'); ?>';
 </script>

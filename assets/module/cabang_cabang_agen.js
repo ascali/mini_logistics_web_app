@@ -2,17 +2,19 @@ var tableDataAgen;
 var btnSubmitAgen;
 $(document).ready(function() { 
     console.log(id_cabang);
+    console.log(id_kota);
+    console.log(id_provinsi);
 
 
     $('#btnTambahAgen').click(function(){
         $("form").trigger('reset');
         $('#myModalAgen').modal('show');
         btnSubmitAgen = 'add';
-        show_kota_agen();
+        show_kota_agen(id_provinsi);
         // console.log(id_kota_cabang);
         // $('option[value="'+id_kota_cabang+'"]').prop('selected', true);
         $('#id_cabang_agen').val(id_cabang);
-        // $('#id_kota_agen').val(id_kota_cabang);
+        // $('#id_kota_agen').val(id_kota);
         // $('#nama_kota_agen').val(nama_kota);
 
     });
@@ -39,15 +41,31 @@ $(document).ready(function() {
         }, {
             "data": null,
             "mRender": function(r){
-                var Edit = `<a href="javascript:void(0)" onclick="edit_agen(${r.id_agen})">Edit</a>`;
+                var Edit = `<a href="javascript:void(0)" onclick="edit_agen(${r.id_agen}, ${id_provinsi})">Edit</a>`;
                 var Hapus = `<a href="javascript:void(0)" onclick="hapus_agen(${r.id_agen})">Hapus</a>`;
                 return `${Edit} | ${Hapus}`;
             }
         }]
     });
+    
+    init();
 
 });
 
+function init(){
+    action_agen();
+}
+
+function show_kota_agen(id){
+    $.getJSON(`${url}/kota/read_provinsi_json?id=${id}`, function(res){
+        $('#id_kota_agen').html('');
+        var data = res.data;
+        data.map(function(r){
+            var opt = `<option value="${r.id_kota}">${r.nama_kota}</option>`;
+            $('#id_kota_agen').append(opt);
+        })
+    });
+}
 
 function action_agen(){
     $("#form_agen").submit(function( event ) {
@@ -82,10 +100,10 @@ function action_agen(){
     });
 }
 
-function edit_agen(id){
+function edit_agen(id,id_provinsi){
     btnSubmitAgen = 'edit';
     $('#myModalAgen').modal('show');
-    show_kota_agen()
+    show_kota_agen(id_provinsi)
     $.ajax({
         url: `${base_url}/agen/read_json?id=${id}`,
         type: 'GET',

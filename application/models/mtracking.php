@@ -28,6 +28,36 @@ class Mtracking extends CI_Model
 		return $data;
 	}
 
+	public function getAllTrackingCabang($id)
+	{
+		$data = array();
+		$param = array('id_cabang' => $id);
+		$query = $this->db->get_where('view_list_tracking', $param);
+		if ($query->num_rows() > 0) {
+			foreach ($query->result_array() as $row) {
+				$data[] = $row;
+			}
+		}
+
+		$query->free_result();
+		return $data;
+	}
+
+	public function getAllTrackingAgen($id)
+	{
+		$data = array();
+		$param = array('id_agen' => $id);
+		$query = $this->db->get_where('view_list_tracking', $param);
+		if ($query->num_rows() > 0) {
+			foreach ($query->result_array() as $row) {
+				$data[] = $row;
+			}
+		}
+
+		$query->free_result();
+		return $data;
+	}
+
 	public function getTrackingForCust($id_cust)
 	{
 		$data = array();

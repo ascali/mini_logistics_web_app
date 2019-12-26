@@ -185,7 +185,7 @@
       <!-- <input <center></center>lass="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="<?php echo base_url(); ?>index.php/cabang/logout"><?= $this->session->userdata('nama_agen'); ?> | <span data-feather="log-out"></span> Log Out</a>
+          <a class="nav-link" href="<?php echo base_url(); ?>index.php/agen/logout"><?= $this->session->userdata('nama_agen'); ?> | <span data-feather="log-out"></span> Log Out</a>
         </li>
       </ul>
     </nav>
@@ -196,7 +196,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/agen/">
                   <span data-feather="home"></span>
                   Beranda
                 </a>
@@ -211,7 +211,7 @@
               </h6>
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link <?php if ($this->uri->segment(2)=='agen') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/agen">
+                  <a class="nav-link <?php if ($this->uri->segment(2)=='agen') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/agen/agen">
                     <span data-feather="compass"></span>
                     Agen
                   </a>
@@ -226,13 +226,13 @@
             </h6>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='pengiriman') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/pengiriman">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='pengiriman') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/agen/pengiriman">
                   <i data-feather="truck"></i>
                   Pengiriman
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='tracking') echo $aktif; ?>"  href="<?php echo base_url(); ?>index.php/cabang/tracking">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='tracking') echo $aktif; ?>"  href="<?php echo base_url(); ?>index.php/agen/tracking">
                   <i data-feather="send"></i>
                   Tracking
               </a>
@@ -247,9 +247,9 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link <?php if ($this->uri->segment(2)=='admin') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/cabang/admin">
+                <a class="nav-link <?php if ($this->uri->segment(2)=='admin') echo $aktif; ?>" href="<?php echo base_url(); ?>index.php/agen/data">
                   <i data-feather="settings"></i>
-                  Kelolah Otorisasi
+                  Setting Data
               </a>
               </li>
             </ul>

@@ -99,28 +99,32 @@ if (count($pengiriman) > 0) {
 	<a href="javascript:;" onclick="window.open('<?php echo base_url(); ?>index.php/pengiriman/cetak_detil/<?php echo $id; ?>', 800, 600);" 
 		class="btn btn-primary">
 		<i class="icon-print icon-white"></i>&nbsp;Cetak</a>
-	<a href="javascript:window.history.back();" class="btn btn-primary pull-right"><i class="icon-ok-circle icon-white"></i>&nbsp;Selesai</a>
+	<a href="javascript:void(0);" onclick="window.location.href='<?php echo base_url(); ?>index.php/page/tracking'" class="btn btn-primary pull-right"><i class="icon-ok-circle icon-white"></i>&nbsp;Selesai</a>
 	<!-- Modal -->
 	<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>index.php/pengiriman/add_barang">
-		<div id="modalTambahBarang" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Tambah Data Barang</h3>
-			</div>
-			<div class="modal-body">
+		<div id="modalTambahBarang" class="modal hide fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Tambah Data Barang</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
 				<p>Silahkan isi data barang yang ingin ditambahkan.</p>
 				<input type="hidden" name="txtIdPengiriman" value="<?php echo $id; ?>">
 				<input type="hidden" name="txtIdBarang" value="<?php echo $id_b+1; ?>">
 				<div class="control-group">
 					<label class="control-label" for="inputNamaBarang">Nama Barang</label>
 					<div class="controls">
-						<input type="text" id="inputNamaBarang" name="txtNamaBarang" placeholder="Nama Barang">
+						<input class="form-control" type="text" id="inputNamaBarang" name="txtNamaBarang" placeholder="Nama Barang">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="inputJenisBarang">Jenis Barang</label>
 					<div class="controls">
-						<select id="inputJenisBarang" name="cbJenisBarang">
+						<select class="form-control" id="inputJenisBarang" name="cbJenisBarang">
 							<?php
 							foreach ($jenis as $data) {
 								echo "<option value='".$data['id_jenis_barang']."'>".$data['jenis_barang']."</option>";
@@ -131,21 +135,30 @@ if (count($pengiriman) > 0) {
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="inputBeratBarang">Berat Barang</label>
-					<div class="controls">
-						<input type="number" id="inputBeratBarang" class="span1" name="txtBeratBarang" placeholder="Berat">
-						<select class="input-small" name="cbSatuanBarang">
-							<option value="kg">kg</option>
-							<!--<option value="liter">liter</option>
-							<option value="kubik">kubik</option>
-							<option value="kw">kw</option>-->
-						</select>
+					<div class="controls row">
+						<div class="col-md-8">
+							<input class="form-control" type="number" id="inputBeratBarang" class="span1" name="txtBeratBarang" placeholder="Berat">
+						</div>
+						<div class="col-md-4">
+							<select  class="form-control input-small" name="cbSatuanBarang">
+								<option value="kg">kg</option>
+								<!--<option value="liter">liter</option>
+								<option value="kubik">kubik</option>
+								<option value="kw">kw</option>-->
+							</select>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
+		      </div>
+		      <div class="modal-footer">
 				<button class="btn btn-primary">Simpan</button>
 				<button class="btn" data-dismiss="modal" aria-hidden="true">Batal</button>
-			</div>
+		      </div>
+		    </div>
+		  </div>
 		</div>
 	</form>
+
+
+
 </fieldset>

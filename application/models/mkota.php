@@ -47,6 +47,24 @@ class Mkota extends CI_Model
 		return $data;
 	}
 
+	public function getAllKotaProvinsiId($id)
+	{
+		$data = array();
+		$this->db->select('id_kota, provinsi.id_provinsi, nama_provinsi, nama_kota');
+		$this->db->from('kota');
+		$this->db->join('provinsi', 'provinsi.id_provinsi = kota.id_provinsi');
+		$this->db->where('provinsi.id_provinsi', $id);
+		$query = $this->db->get();
+		$this->db->order_by('nama_kota', 'asc');
+		if ($query->num_rows() > 0) {
+			foreach ($query->result_array() as $row) {
+				$data[] = $row;
+			}
+		}
+		$query->free_result();
+		return $data;
+	}
+
 	public function getKotaNotEqual($nama_kota)
 	{
 		$data = array();

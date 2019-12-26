@@ -38,6 +38,47 @@ class Cabang extends CI_Controller
 		}
 	}
 
+	public function data()
+	{
+		$masuk = $this->session->userdata('status');
+		if ($masuk != "masuk") {
+			$this->login();
+		} else {
+			$data['judul'] = 'Data Cabang';
+			$data['aktif'] = 'active';
+			$data['module'] = 'cabang_data';
+			$data['konten'] = 'cabang/data';
+			$this->load->view('cabang/pg_cabang', $data);
+		}
+	}
+
+	public function pengiriman()
+	{
+		$id_cabang = $this->session->userdata('id_cabang');
+		$data['judul'] = 'Pengiriman';
+		$data['konten'] = 'cabang/pengiriman';
+		$data['aktif'] = 'active';
+		$data['module'] = 'pengiriman';
+		$data['pengiriman'] = $this->mpengiriman->getAllPengirimanCabang($id_cabang);
+		$this->load->vars($data);
+		$this->load->view('cabang/pg_cabang', $data, FALSE);
+	}
+
+	public function tracking($id = NULL)
+	{
+		$id_cabang = $this->session->userdata('id_cabang');
+		$jml = $this->db->get('view_list_tracking');
+
+		$data['judul'] = 'Tracking';
+		$data['konten'] = 'cabang/tracking';
+		$data['aktif'] = 'active';
+		$data['module'] = 'tracking';
+
+		$data['tracking'] = $this->mtracking->getAllTrackingCabang($id_cabang);
+		$this->load->vars($data);
+		$this->load->view('cabang/pg_cabang', $data, FALSE);
+	}
+
 	public function login()
 	{
 		$data['judul'] = 'Login Halaman Cabang';
@@ -57,6 +98,8 @@ class Cabang extends CI_Controller
 				'email_cabang' => $row['email_cabang'],
 				'password_cabang' => $row['password_cabang'],
 				'nama_cabang' => $row['nama_cabang'],
+				'id_kota' => $row['ID_KOTA'],
+				'id_provinsi' => $row['ID_PROVINSI'],
 				'status' => 'masuk'
 			);
 			$this->session->set_userdata($item);

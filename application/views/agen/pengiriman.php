@@ -48,7 +48,7 @@
 					<a href="javascript:;" onclick="window.open('<?php echo base_url(); ?>index.php/pengiriman/detil/<?php echo $list['id_pengiriman']; ?>', 800, 600)">Detil</a>
 					<?php
 					echo nbs(2)."/".nbs(2);
-					echo anchor('pengiriman/edit_cabang/'.$list['id_pengiriman'], 'Ubah', '');
+					echo anchor('pengiriman/edit_agen/'.$list['id_pengiriman'], 'Ubah', '');
 					?>
 					<!--<a href="javascript:;" onclick="window.open('<?php echo base_url(); ?>index.php/pengiriman/edit/<?php echo $list['id_pengiriman']; ?>', 500, 435)">Ubah</a>-->
 					<?php
