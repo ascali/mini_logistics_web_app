@@ -13,7 +13,7 @@ class Cabang extends CI_Controller
 	public function index()
 	{
 		$masuk = $this->session->userdata('status');
-		if ($masuk != "masuk") {
+		if ($masuk != "masuk_cabang") {
 			$this->login();
 		} else {
 			$data['judul'] = 'Beranda';
@@ -27,7 +27,7 @@ class Cabang extends CI_Controller
 	public function agen()
 	{
 		$masuk = $this->session->userdata('status');
-		if ($masuk != "masuk") {
+		if ($masuk != "masuk_cabang") {
 			$this->login();
 		} else {
 			$data['judul'] = 'Agen';
@@ -41,7 +41,7 @@ class Cabang extends CI_Controller
 	public function data()
 	{
 		$masuk = $this->session->userdata('status');
-		if ($masuk != "masuk") {
+		if ($masuk != "masuk_cabang") {
 			$this->login();
 		} else {
 			$data['judul'] = 'Data Cabang';
@@ -91,7 +91,7 @@ class Cabang extends CI_Controller
 		$this->load->library('encrypt');
 		$username = $this->input->post('txtEmail');
 		$password = $this->input->post('txtPassword');
-		$row = $this->mcustomer->validasi_cabang($username, $password);
+		$row = $this->mloginadmin->validasi_cabang($username, $password);
 		if (count($row) > 0) {
 			$item = array(
 				'id_cabang' => $row['id_cabang'],
@@ -100,7 +100,7 @@ class Cabang extends CI_Controller
 				'nama_cabang' => $row['nama_cabang'],
 				'id_kota' => $row['ID_KOTA'],
 				'id_provinsi' => $row['ID_PROVINSI'],
-				'status' => 'masuk'
+				'status' => 'masuk_cabang'
 			);
 			$this->session->set_userdata($item);
 			redirect('cabang', 'refresh');

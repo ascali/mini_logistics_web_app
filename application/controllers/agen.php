@@ -13,7 +13,7 @@ class Agen extends CI_Controller
 	public function index()
 	{
 		$masuk = $this->session->userdata('status');
-		if ($masuk != "masuk") {
+		if ($masuk != "masuk_agen") {
 			$this->login();
 		} else {
 			$data['judul'] = 'Beranda';
@@ -27,7 +27,7 @@ class Agen extends CI_Controller
 	public function data()
 	{
 		$masuk = $this->session->userdata('status');
-		if ($masuk != "masuk") {
+		if ($masuk != "masuk_agen") {
 			$this->login();
 		} else {
 			$data['judul'] = 'Data Agen';
@@ -77,7 +77,7 @@ class Agen extends CI_Controller
 		$this->load->library('encrypt');
 		$username = $this->input->post('txtEmail');
 		$password = $this->input->post('txtPassword');
-		$row = $this->mcustomer->validasi_agen($username, $password);
+		$row = $this->mloginadmin->validasi_agen($username, $password);
 		if (count($row) > 0) {
 			$item = array(
 				'id_agen' => $row['id_agen'],
@@ -86,7 +86,7 @@ class Agen extends CI_Controller
 				'nama_agen' => $row['nama_agen'],
 				'id_kota' => $row['ID_KOTA'],
 				'id_provinsi' => $row['ID_PROVINSI'],
-				'status' => 'masuk'
+				'status' => 'masuk_agen'
 			);
 			$this->session->set_userdata($item);
 			redirect('agen', 'refresh');
