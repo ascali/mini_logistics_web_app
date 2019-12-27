@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Website tracking PT. Multiartha Retalindo Lestari">
+    <meta name="keywoards" content="kirim barang, tracking, pelayaran, pengiriman">
+    <meta name="theme-color" content="#563d7c">
+    <meta name="author" content="PT. Multiartha Retalindo Lestari, Ascaliko">
     <title><?php echo $judul; ?></title>
 
     <!-- Favicons -->
