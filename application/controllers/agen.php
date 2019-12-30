@@ -81,6 +81,7 @@ class Agen extends CI_Controller
 		if (count($row) > 0) {
 			$item = array(
 				'id_agen' => $row['id_agen'],
+				'id_cabang' => $row['id_cabang'],
 				'email_agen' => $row['email_agen'],
 				'password_agen' => $row['password_agen'],
 				'nama_agen' => $row['nama_agen'],

@@ -69,6 +69,60 @@ class Page extends CI_Controller
 		$this->load->view('guest/page', $data);
 	}
 
+	public function pengiriman_barang_admin()
+	{
+		$data['judul'] = 'Pengiriman Barang';
+		$data['konten'] = 'admin/pengiriman_admin';
+		$data['aktif'] = 'active';
+		$id_pengiriman = $this->mpengiriman->genIdPengiriman();
+		if (count($id_pengiriman)>0) {
+			foreach ($id_pengiriman as $i) {
+				$id = $id_pengiriman['new_id'];
+			}
+		}
+		$data['id'] = $id;
+		$data['kota1'] = $this->mkota->getKotaNotEqual('Surabaya');
+		$data['kota'] = $this->mkota->getAllKota();
+		$data['customer'] = $this->mcustomer->getAllCustomerPengiriman();
+		$this->load->view('admin/pg_admin', $data);
+	}
+
+	public function pengiriman_barang_cabang()
+	{
+		$data['judul'] = 'Pengiriman Barang';
+		$data['konten'] = 'cabang/pengiriman_cabang';
+		$data['aktif'] = 'active';
+		$id_pengiriman = $this->mpengiriman->genIdPengiriman();
+		if (count($id_pengiriman)>0) {
+			foreach ($id_pengiriman as $i) {
+				$id = $id_pengiriman['new_id'];
+			}
+		}
+		$data['id'] = $id;
+		$data['kota1'] = $this->mkota->getKotaNotEqual('Surabaya');
+		$data['kota'] = $this->mkota->getAllKota();
+		$data['customer'] = $this->mcustomer->getAllCustomerPengiriman();
+		$this->load->view('cabang/pg_cabang', $data);
+	}
+
+	public function pengiriman_barang_agen()
+	{
+		$data['judul'] = 'Pengiriman Barang';
+		$data['konten'] = 'agen/pengiriman_agen';
+		$data['aktif'] = 'active';
+		$id_pengiriman = $this->mpengiriman->genIdPengiriman();
+		if (count($id_pengiriman)>0) {
+			foreach ($id_pengiriman as $i) {
+				$id = $id_pengiriman['new_id'];
+			}
+		}
+		$data['id'] = $id;
+		$data['kota1'] = $this->mkota->getKotaNotEqual('Surabaya');
+		$data['kota'] = $this->mkota->getAllKota();
+		$data['customer'] = $this->mcustomer->getAllCustomerPengiriman();
+		$this->load->view('agen/pg_agen', $data);
+	}
+
 	public function tracking()
 	{
 		$id_cust = $this->session->userdata('id_cust');

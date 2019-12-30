@@ -62,7 +62,7 @@
 
   <body class="bg">
     <div class="container">
-      <form method="post" style="box-shadow: 0 8px 6px -6px black;" class="form-signin" action="<?php echo base_url();?>index.php/cabang/ceklogin">
+      <form method="post" style="box-shadow: 0 8px 6px -6px black;" class="form-signin" action="<?php echo base_url();?>cabang/ceklogin">
         <h2 class="form-signin-heading"><center>Login Cabang</center></h2>
         <input type="text" class="input-block-level" placeholder="Email" name="txtEmail">
         <input type="password" class="input-block-level" placeholder="Password" name="txtPassword">

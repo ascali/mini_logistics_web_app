@@ -146,6 +146,88 @@ class Pengiriman extends CI_Controller
 		redirect('pengiriman/view_detil_pengiriman/'.$id, 'refresh');
 	}
 
+	public function buat_pengiriman_cust_admin()
+	{
+		// $id_cust = $this->session->userdata('id_cust');
+		$id_cust = $this->input->post('id_cust');
+		$id = $this->input->post('txtIdPengiriman');
+		$id_kota_asal = $this->input->post('cbKotaAsal');
+		$id_kota_tujuan = $this->input->post('cbKotaTujuan');
+		$id_b = $this->mbiaya->getIdBiaya($id_kota_asal, $id_kota_tujuan);
+		foreach ($id_b as $data) {
+			$id_biaya = $data['id_biaya'];
+			$biaya = $data['biaya'];
+		}
+		$tgl = $this->input->post('txtTglPengiriman');
+		//$biaya = $this->input->post();
+		$nama = $this->input->post('txtNamaPenerima');
+		$tujuan = $this->input->post('txtTujuanPengiriman');
+		$alamat = $this->input->post('txtAlamatPenerima');
+		$berat = $this->input->post('txtBeratPengiriman');
+		$no_resi = $this->mtracking->generate_no_resi();
+		$date = date('Y-m-d');
+		$this->mpengiriman->insert($id, $id_biaya, $tgl, $biaya, $nama, $tujuan, $alamat, $berat);	
+		//echo $id." ".$id_biaya." ".$tgl." ".$biaya." ".$nama." ".$tujuan." ".$alamat." ".$berat;
+		$this->mtracking->insert($no_resi, $id, $id_cust, 'Sedang Diproses', $date, 'Surabaya', '');
+		$this->session->set_flashdata('message', 'Data pengiriman sudah dibuat');
+		redirect('pengiriman/view_detil_pengiriman_admin/'.$id.'?id_cust='.$id_cust, 'refresh');
+	}
+
+	public function buat_pengiriman_cust_cabang()
+	{
+		$id_cust = $this->input->post('id_cust');
+		$id_cabang = $this->session->userdata('id_cabang');
+		$id = $this->input->post('txtIdPengiriman');
+		$id_kota_asal = $this->input->post('cbKotaAsal');
+		$id_kota_tujuan = $this->input->post('cbKotaTujuan');
+		$id_b = $this->mbiaya->getIdBiaya($id_kota_asal, $id_kota_tujuan);
+		foreach ($id_b as $data) {
+			$id_biaya = $data['id_biaya'];
+			$biaya = $data['biaya'];
+		}
+		$tgl = $this->input->post('txtTglPengiriman');
+		//$biaya = $this->input->post();
+		$nama = $this->input->post('txtNamaPenerima');
+		$tujuan = $this->input->post('txtTujuanPengiriman');
+		$alamat = $this->input->post('txtAlamatPenerima');
+		$berat = $this->input->post('txtBeratPengiriman');
+		$no_resi = $this->mtracking->generate_no_resi();
+		$date = date('Y-m-d');
+		$this->mpengiriman->insert_cabang($id, $id_biaya, $tgl, $biaya, $nama, $tujuan, $alamat, $berat, $id_cabang);	
+		//echo $id." ".$id_biaya." ".$tgl." ".$biaya." ".$nama." ".$tujuan." ".$alamat." ".$berat;
+		$this->mtracking->insert($no_resi, $id, $id_cust, 'Sedang Diproses', $date, 'Surabaya', '');
+		$this->session->set_flashdata('message', 'Data pengiriman sudah dibuat');
+		redirect('pengiriman/view_detil_pengiriman_cabang/'.$id.'?id_cust='.$id_cust, 'refresh');
+	}
+
+	public function buat_pengiriman_cust_agen()
+	{
+		$id_cust = $this->input->post('id_cust');
+		$id_cabang = $this->session->userdata('id_cabang');
+		$id_agen = $this->session->userdata('id_agen');
+		$id = $this->input->post('txtIdPengiriman');
+		$id_kota_asal = $this->input->post('cbKotaAsal');
+		$id_kota_tujuan = $this->input->post('cbKotaTujuan');
+		$id_b = $this->mbiaya->getIdBiaya($id_kota_asal, $id_kota_tujuan);
+		foreach ($id_b as $data) {
+			$id_biaya = $data['id_biaya'];
+			$biaya = $data['biaya'];
+		}
+		$tgl = $this->input->post('txtTglPengiriman');
+		//$biaya = $this->input->post();
+		$nama = $this->input->post('txtNamaPenerima');
+		$tujuan = $this->input->post('txtTujuanPengiriman');
+		$alamat = $this->input->post('txtAlamatPenerima');
+		$berat = $this->input->post('txtBeratPengiriman');
+		$no_resi = $this->mtracking->generate_no_resi();
+		$date = date('Y-m-d');
+		$this->mpengiriman->insert_agen($id, $id_biaya, $tgl, $biaya, $nama, $tujuan, $alamat, $berat, $id_cabang, $id_agen);	
+		//echo $id." ".$id_biaya." ".$tgl." ".$biaya." ".$nama." ".$tujuan." ".$alamat." ".$berat;
+		$this->mtracking->insert($no_resi, $id, $id_cust, 'Sedang Diproses', $date, 'Surabaya', '');
+		$this->session->set_flashdata('message', 'Data pengiriman sudah dibuat');
+		redirect('pengiriman/view_detil_pengiriman_agen/'.$id.'?id_cust='.$id_cust, 'refresh');
+	}
+
 	public function data_barang()
 	{
 		$id_pengiriman = $this->session->userdata('id_pengiriman');
@@ -185,6 +267,54 @@ class Pengiriman extends CI_Controller
 		$this->load->view('guest/page', $data, FALSE);
 	}
 
+	public function view_detil_pengiriman_admin($id_pengiriman)
+	{
+		$id_cust = $_GET['id_cust'];//$this->session->userdata('id_cust');
+		$data['judul'] = 'Detil Pengiriman (No. Pengiriman: '.$id_pengiriman.')';
+		$data['konten'] = 'admin/view_detil_pengiriman_admin';
+		$data['aktif'] = 'active';
+		$data['jenis'] = $this->mjenis->getAllJenis();
+		$data['pengiriman'] = $this->mpengiriman->getPengirimanById($id_pengiriman);
+		$data['detil_pengiriman'] = $this->mpengiriman->detil_pengiriman($id_cust, $id_pengiriman);
+		$data['sum_berat'] = $this->mpengiriman->sum_berat($id_pengiriman);
+		$data['no_resi'] = $this->mtracking->getNoResi($id_cust, $id_pengiriman);
+		$data['id_barang'] = $this->mbarang->getLastBarang();
+		$this->load->vars($data);
+		$this->load->view('admin/pg_admin', $data, FALSE);
+	}
+
+	public function view_detil_pengiriman_cabang($id_pengiriman)
+	{
+		$id_cust = $_GET['id_cust'];
+		$data['judul'] = 'Detil Pengiriman (No. Pengiriman: '.$id_pengiriman.')';
+		$data['konten'] = 'cabang/view_detil_pengiriman_cabang';
+		$data['aktif'] = 'active';
+		$data['jenis'] = $this->mjenis->getAllJenis();
+		$data['pengiriman'] = $this->mpengiriman->getPengirimanById($id_pengiriman);
+		$data['detil_pengiriman'] = $this->mpengiriman->detil_pengiriman($id_cust, $id_pengiriman);
+		$data['sum_berat'] = $this->mpengiriman->sum_berat($id_pengiriman);
+		$data['no_resi'] = $this->mtracking->getNoResi($id_cust, $id_pengiriman);
+		$data['id_barang'] = $this->mbarang->getLastBarang();
+		$this->load->vars($data);
+		$this->load->view('cabang/pg_cabang', $data, FALSE);
+	}
+
+	public function view_detil_pengiriman_agen($id_pengiriman)
+	{
+		$id_cust = $_GET['id_cust'];
+		$data['judul'] = 'Detil Pengiriman (No. Pengiriman: '.$id_pengiriman.')';
+		$data['konten'] = 'agen/view_detil_pengiriman_agen';
+		$data['aktif'] = 'active';
+		$data['jenis'] = $this->mjenis->getAllJenis();
+		$data['pengiriman'] = $this->mpengiriman->getPengirimanById($id_pengiriman);
+		$data['detil_pengiriman'] = $this->mpengiriman->detil_pengiriman($id_cust, $id_pengiriman);
+		$data['sum_berat'] = $this->mpengiriman->sum_berat($id_pengiriman);
+		$data['no_resi'] = $this->mtracking->getNoResi($id_cust, $id_pengiriman);
+		$data['id_barang'] = $this->mbarang->getLastBarang();
+		$this->load->vars($data);
+		$this->load->view('agen/pg_agen', $data, FALSE);
+	}
+
 	public function cetak_detil($id_pengiriman)
 	{
 		$id_cust = $this->session->userdata('id_cust');
@@ -201,6 +331,54 @@ class Pengiriman extends CI_Controller
 		$this->load->view('guest/cetak_pengiriman', $data, FALSE);
 	}
 
+	public function cetak_detil_admin($id_pengiriman)
+	{
+		$id_cust = $_GET['id_cust'];//$this->session->userdata('id_cust');
+		$data['judul'] = 'Detil Pengiriman (No. Pengiriman: '.$id_pengiriman.')';
+		$data['konten'] = 'admin/view_detil_pengiriman_admin';
+		$data['aktif'] = 'active';
+		$data['jenis'] = $this->mjenis->getAllJenis();
+		$data['pengiriman'] = $this->mpengiriman->getPengirimanById($id_pengiriman);
+		$data['detil_pengiriman'] = $this->mpengiriman->detil_pengiriman($id_cust, $id_pengiriman);
+		$data['sum_berat'] = $this->mpengiriman->sum_berat($id_pengiriman);
+		$data['no_resi'] = $this->mtracking->getNoResi($id_cust, $id_pengiriman);
+		$data['id_barang'] = $this->mbarang->getLastBarang();
+		$this->load->vars($data);
+		$this->load->view('admin/pg_admin', $data, FALSE);
+	}
+
+	public function cetak_detil_cabang($id_pengiriman)
+	{
+		$id_cust = $_GET['id_cust'];
+		$data['judul'] = 'Detil Pengiriman (No. Pengiriman: '.$id_pengiriman.')';
+		$data['konten'] = 'cabang/view_detil_pengiriman_cabang';
+		$data['aktif'] = 'active';
+		$data['jenis'] = $this->mjenis->getAllJenis();
+		$data['pengiriman'] = $this->mpengiriman->getPengirimanById($id_pengiriman);
+		$data['detil_pengiriman'] = $this->mpengiriman->detil_pengiriman($id_cust, $id_pengiriman);
+		$data['sum_berat'] = $this->mpengiriman->sum_berat($id_pengiriman);
+		$data['no_resi'] = $this->mtracking->getNoResi($id_cust, $id_pengiriman);
+		$data['id_barang'] = $this->mbarang->getLastBarang();
+		$this->load->vars($data);
+		$this->load->view('cabang/pg_cabang', $data, FALSE);
+	}
+
+	public function cetak_detil_agen($id_pengiriman)
+	{
+		$id_cust = $_GET['id_cust'];
+		$data['judul'] = 'Detil Pengiriman (No. Pengiriman: '.$id_pengiriman.')';
+		$data['konten'] = 'agen/view_detil_pengiriman_agen';
+		$data['aktif'] = 'active';
+		$data['jenis'] = $this->mjenis->getAllJenis();
+		$data['pengiriman'] = $this->mpengiriman->getPengirimanById($id_pengiriman);
+		$data['detil_pengiriman'] = $this->mpengiriman->detil_pengiriman($id_cust, $id_pengiriman);
+		$data['sum_berat'] = $this->mpengiriman->sum_berat($id_pengiriman);
+		$data['no_resi'] = $this->mtracking->getNoResi($id_cust, $id_pengiriman);
+		$data['id_barang'] = $this->mbarang->getLastBarang();
+		$this->load->vars($data);
+		$this->load->view('agen/pg_agen', $data, FALSE);
+	}
+
 	public function add_barang()
 	{
 		$id_pengiriman = $this->input->post('txtIdPengiriman');
@@ -215,6 +393,57 @@ class Pengiriman extends CI_Controller
 		$this->mpengiriman->insert_detil_pengiriman($id_barang, $id_pengiriman);
 		$this->mpengiriman->update_berat_pengiriman($id_pengiriman, $berat_barang);
 		redirect('pengiriman/view_detil_pengiriman/'.$id_pengiriman, 'refresh');
+	}
+
+	public function add_barang_admin()
+	{
+		$id_cust = $_GET['id_cust'];
+		$id_pengiriman = $this->input->post('txtIdPengiriman');
+		$nama_barang = $this->input->post('txtNamaBarang');
+		$jenis_barang = $this->input->post('cbJenisBarang');
+		$berat_barang = $this->input->post('txtBeratBarang');
+		$satuan_barang = $this->input->post('cbSatuanBarang');
+		$id_barang = $this->input->post('txtIdBarang');
+		$berat_pengiriman = $this->input->post('txtTotalBerat');
+		$this->mbarang->insert($jenis_barang, $nama_barang, $berat_barang, $satuan_barang);
+		//echo $id_barang." ".$id_pengiriman;
+		$this->mpengiriman->insert_detil_pengiriman($id_barang, $id_pengiriman);
+		$this->mpengiriman->update_berat_pengiriman($id_pengiriman, $berat_barang);
+		redirect('pengiriman/view_detil_pengiriman_admin/'.$id_pengiriman.'?id_cust='.$id_cust, 'refresh');
+	}
+
+	public function add_barang_cabang()
+	{
+		$id_cust = $_GET['id_cust'];
+		$id_pengiriman = $this->input->post('txtIdPengiriman');
+		$nama_barang = $this->input->post('txtNamaBarang');
+		$jenis_barang = $this->input->post('cbJenisBarang');
+		$berat_barang = $this->input->post('txtBeratBarang');
+		$satuan_barang = $this->input->post('cbSatuanBarang');
+		$id_barang = $this->input->post('txtIdBarang');
+		$berat_pengiriman = $this->input->post('txtTotalBerat');
+		$this->mbarang->insert($jenis_barang, $nama_barang, $berat_barang, $satuan_barang);
+		//echo $id_barang." ".$id_pengiriman;
+		$this->mpengiriman->insert_detil_pengiriman($id_barang, $id_pengiriman);
+		$this->mpengiriman->update_berat_pengiriman($id_pengiriman, $berat_barang);
+		redirect('pengiriman/view_detil_pengiriman_cabang/'.$id_pengiriman.'?id_cust='.$id_cust, 'refresh');
+	}
+
+	public function add_barang_agen()
+	{
+		$id_cust = $_GET['id_cust'];
+		$id_pengiriman = $this->input->post('txtIdPengiriman');
+		$nama_barang = $this->input->post('txtNamaBarang');
+		$jenis_barang = $this->input->post('cbJenisBarang');
+		$berat_barang = $this->input->post('txtBeratBarang');
+		$satuan_barang = $this->input->post('cbSatuanBarang');
+		$id_barang = $this->input->post('txtIdBarang');
+		$berat_pengiriman = $this->input->post('txtTotalBerat');
+		$this->mbarang->insert($jenis_barang, $nama_barang, $berat_barang, $satuan_barang);
+		//echo $id_barang." ".$id_pengiriman;
+		$this->mpengiriman->insert_detil_pengiriman($id_barang, $id_pengiriman);
+		$this->mpengiriman->update_berat_pengiriman($id_pengiriman, $berat_barang);
+		redirect('pengiriman/view_detil_pengiriman_agen/'.$id_pengiriman.'?id_cust='.$id_cust, 'refresh');
 	}
 
 	public function hapus_detil_barang($id_barang)

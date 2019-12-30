@@ -14,7 +14,6 @@ class Mcustomer extends CI_Model
 
 	public function getAllCustomer()
 	{
-		$data = array();
 		$this->db->select('id_cust, id_bidang_kerja, email_cust, password_cust, nama_cust, jenis_kel_cust, tgl_lahir_cust,
 			alamat_cust, kota_cust, no_telp_cust, perusahaan_cust, alamat_per_cust');
 		$this->db->from('customer');
@@ -24,6 +23,20 @@ class Mcustomer extends CI_Model
 				$data[] = $row;
 			}
 		}
+		$query->free_result();
+		return $data;
+	}
+
+	public function getAllCustomerPengiriman()
+	{
+		$data = array();
+		$query = $this->db->query('SELECT * FROM customer ORDER BY nama_cust ASC');
+		if ($query->num_rows() > 0) {
+			foreach ($query->result_array() as $row) {
+				$data[] = $row;
+			}
+		}
+
 		$query->free_result();
 		return $data;
 	}
@@ -99,6 +112,44 @@ class Mcustomer extends CI_Model
 		$this->db->where('password_cust', $password);
 		$this->db->limit(1);
 		$query = $this->db->get('customer');
+		$this->session->set_userdata('lastquery', $this->db->last_query());
+		if ($query->num_rows() > 0) {
+			$row = $query->row_array();
+			return $row;
+		} else {
+			$this->session->set_flashdata('error', 'Maaf, silahkan coba lagi!');
+			return array();
+		}
+	}
+
+	function validasi_cabang($email, $password)
+	{
+		// $this->db->select('id_cabang, email_cabang, password_cabang, nama_cabang, id_kota');
+		// $this->db->where('email_cabang', $email);
+		// $this->db->where('password_cabang', $password);
+		// $this->db->limit(1);
+		// $query = $this->db->get('cabang');
+		$query = $this->db->query("SELECT  *
+			from cabang c JOIN kota k ON c.id_kota=k.ID_KOTA JOIN provinsi p ON k.ID_PROVINSI=p.ID_PROVINSI where c.email_cabang = '$email' AND c.password_cabang = '$password' LIMIT 1");
+		$this->session->set_userdata('lastquery', $this->db->last_query());
+		if ($query->num_rows() > 0) {
+			$row = $query->row_array();
+			return $row;
+		} else {
+			$this->session->set_flashdata('error', 'Maaf, silahkan coba lagi!');
+			return array();
+		}
+	}
+
+	function validasi_agen($email, $password)
+	{
+		// $this->db->select('id_agen, email_agen, password_agen, nama_agen, id_kota');
+		// $this->db->where('email_agen', $email);
+		// $this->db->where('password_agen', $password);
+		// $this->db->limit(1);
+		// $query = $this->db->get('agen');
+		$query = $this->db->query("SELECT *
+			from agen a JOIN kota k ON a.id_kota=k.ID_KOTA JOIN provinsi p ON k.ID_PROVINSI=p.ID_PROVINSI where a.email_agen = '$email' AND a.password_agen = '$password' LIMIT 1");
 		$this->session->set_userdata('lastquery', $this->db->last_query());
 		if ($query->num_rows() > 0) {
 			$row = $query->row_array();

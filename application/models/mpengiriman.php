@@ -141,6 +141,39 @@ class Mpengiriman extends CI_Model
 		$this->db->insert('pengiriman', $data);
 	}
 
+	public function insert_cabang($id_pengiriman, $id_biaya, $tgl, $biaya, $nama, $tujuan, $alamat, $berat, $id_cabang)
+	{
+		$data = array(
+			'id_pengiriman' => $id_pengiriman,
+			'id_biaya' => $id_biaya,
+			'tgl_pengiriman' => $tgl,
+			'biaya_pengiriman' => $biaya,
+			'nama_penerima' => $nama,
+			'tujuan_pengiriman' => $tujuan,
+			'alamat_penerima' => $alamat,
+			'berat_pengiriman' => $berat,
+			'id_cabang' => $id_cabang
+			);
+		$this->db->insert('pengiriman', $data);
+	}
+
+	public function insert_agen($id_pengiriman, $id_biaya, $tgl, $biaya, $nama, $tujuan, $alamat, $berat, $id_cabang, $id_agen)
+	{
+		$data = array(
+			'id_pengiriman' => $id_pengiriman,
+			'id_biaya' => $id_biaya,
+			'tgl_pengiriman' => $tgl,
+			'biaya_pengiriman' => $biaya,
+			'nama_penerima' => $nama,
+			'tujuan_pengiriman' => $tujuan,
+			'alamat_penerima' => $alamat,
+			'berat_pengiriman' => $berat,
+			'id_cabang' => $id_cabang,
+			'id_agen' => $id_agen,
+			);
+		$this->db->insert('pengiriman', $data);
+	}
+
 	public function delete($id)
 	{
 		$data = array('id_pengiriman' => $id);

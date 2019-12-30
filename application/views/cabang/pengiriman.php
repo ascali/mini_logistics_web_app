@@ -2,8 +2,9 @@
 	<h1 class="h2">Pengiriman</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 	  <div class="btn-group mr-2">
-		<a href="javascript:void(0)" role="button" class="btn btn-sm btn-outline-primary" 
-			onclick="window.open('<?php echo base_url(); ?>index.php/pengiriman/buat_permintaan_pengiriman', 800, 600)">
+		<!-- <a href="javascript:void(0)" role="button" class="btn btn-sm btn-outline-primary" 			onclick="window.open('<?php //echo base_url(); ?>index.php/pengiriman/buat_permintaan_pengiriman', 800, 600)"> -->
+
+		<a href="<?php echo base_url(); ?>index.php/page/pengiriman_barang_cabang" role="button" class="btn btn-sm btn-outline-primary">
 			<i class="icon-plus-sign icon-white"></i>&nbsp;Tambah Data
 		</a>
 	  </div>
