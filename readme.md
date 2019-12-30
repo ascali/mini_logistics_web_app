@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/26688276/codeigniter-session-work-fine-on-local-but-not-working-on-godaddy
