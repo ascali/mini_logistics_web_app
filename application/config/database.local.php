@@ -3,10 +3,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'ascaliko.com';
-$db['default']['username'] = 'ascaliko_root';
-$db['default']['password'] = 'ascaliko_root';
-$db['default']['database'] = 'ascaliko_tct_db';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'root';
+$db['default']['database'] = 'ne_db';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -21,4 +21,3 @@ $db['default']['stricton'] = FALSE;
 
 
 /* End of file database.php */
-/* Location: ./application/config/database.php */
