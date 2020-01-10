@@ -1,7 +1,7 @@
 <?php
 echo heading($judul, 3);
-$per = $tahun."-".$bulan;
-echo "Periode: ".date('M Y' ,strtotime($per));
+$per = $date;
+echo "Tanggal: ".date('d M Y' ,strtotime($per));
 if (count($laporan) > 0) {
 ?>
 <table class="table table-striped">
@@ -9,7 +9,7 @@ if (count($laporan) > 0) {
 		<tr>
 			<th>No.</th>
 			<th>No. Pengiriman</th>
-			<th>Biayan</th>
+			<th>Biaya</th>
 			<th>Nama Pengirim</th>
 			<th>Kota Tujuan</th>
 			<th>Berat Pengiriman (Kg)</th>
@@ -27,9 +27,7 @@ if (count($laporan) > 0) {
 			$kota_tujuan = $value['nama_kota'];
 			$berat_pengiriman = number_format($value['berat_pengiriman']);
 			$tgl = $value['tanggal'];
-			$bln = $value['bulan'];
-			$thn = $value['tahun'];
-			$tanggal = $thn.'-'.$bln.'-'.$tgl;
+			$tanggal = $tgl;
 			$date = date('d M Y', strtotime($tanggal));
 			$status_pengiriman = $value['status_pengiriman'];
 			$biaya_pengiriman = $value['biaya_pengiriman'];
@@ -61,7 +59,7 @@ if (count($laporan) > 0) {
 	<button class="btn btn-primary" type="button" onclick="javascript:window.back();">
 		<i class="icon-chevron-left icon-white"></i>&nbsp;Kembali
 	</button>
-	<a href="<?php echo base_url(); ?>index.php/laporan/cetak_bulanan/<?php echo $tahun; ?>/<?php echo $bulan; ?>" class="btn btn-primary">
+	<a href="<?php echo base_url(); ?>index.php/laporan/cetak_harian/<?php echo $tanggal; ?>" class="btn btn-primary">
 		<i class="icon-print icon-white"></i>&nbsp;Cetak (PDF)
 	</a>
 </div>

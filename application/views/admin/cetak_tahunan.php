@@ -26,6 +26,7 @@ if (count($jumlah) > 0) {
 
 	$pdf->Cell(0, 10, "Jumlah Pengiriman: ".$jml_pengiriman." Pengiriman", 0, 1, "L");
 
+$tot = array();
 	foreach ($laporan as $value) {
 		$kota = $value['kota'];
 		$jml = $value['jumlah'];
@@ -34,6 +35,9 @@ if (count($jumlah) > 0) {
 		$date = $tahun."-".$bulan."-01";
 		$tgl = date("M Y", strtotime($date));
 		
+	$biaya_pengiriman = $value['biaya_pengiriman'];
+	array_push($tot, $biaya_pengiriman);
+	
 		$pdf->SetFont("Times", "B", "12");
 		$pdf->Cell(0, 5, "Kota: ".$kota, 0, 1, "L");
 		$pdf->Cell(40, 5, "Bulan", 1, 0, "C");
@@ -41,8 +45,13 @@ if (count($jumlah) > 0) {
 		$pdf->SetFont("Times", "", "12");
 		$pdf->Cell(40, 5, $tgl, 1, 0, "R");
 		$pdf->Cell(30, 5, $jml, 1, 1, "C");
+		
+		$pdf->Cell(0, 5, "Biaya : Rp. ".number_format($biaya_pengiriman,2,",","."), 0, 1, "L");
 		$pdf->Ln(2);
 	}
+$total = array_sum($tot);
+$total = number_format($total,2,",",".");
+		$pdf->Cell(0, 5, "Biaya Pengiriman: Rp. ".$total, 0, 1, "L");
 
 	$pdf->Output("Laporan Tahunan (Periode ".$tahun.").pdf", "I");
 } else {

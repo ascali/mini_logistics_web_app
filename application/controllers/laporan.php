@@ -9,6 +9,32 @@ class Laporan extends CI_Controller
 		parent::__construct();
 	}
 
+	public function harian()
+	{
+		$date = $this->input->post('date');
+		$data['date'] = $date;
+		$data['judul'] = 'Laporan Harian';
+		$data['konten'] = 'admin/laporan_harian';
+		$data['aktif'] = 'active';
+		$data['laporan'] = $this->mlaporan->get_data_laporan_harian($date);
+		$this->load->vars($data);
+		$this->load->view('admin/pg_admin', $data, FALSE);
+	}
+
+	public function mingguan()
+	{
+		$date1 = $this->input->post('date1');
+		$date2 = $this->input->post('date2');
+		$data['date1'] = $date1;
+		$data['date2'] = $date2;
+		$data['judul'] = 'Laporan Mingguan';
+		$data['konten'] = 'admin/laporan_mingguan';
+		$data['aktif'] = 'active';
+		$data['laporan'] = $this->mlaporan->get_data_laporan_mingguan($date1, $date2);
+		$this->load->vars($data);
+		$this->load->view('admin/pg_admin', $data, FALSE);
+	}
+
 	public function bulanan()
 	{
 		$tahun = $this->input->post('cbTahun');

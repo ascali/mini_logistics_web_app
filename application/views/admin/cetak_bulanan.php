@@ -36,16 +36,18 @@ if (count($laporan) > 0) {
 
 	$pdf->SetFont("Times", "B", "12");
 	$pdf->Cell(10, 10, "No.", 1, 0, "C");
+	$pdf->Cell(30, 10, "Biaya", 1, 0, "C");
 	$pdf->Cell(30, 10, "No. Pengiriman", 1, 0, "C");
 	$pdf->Cell(50, 10, "Nama Pengirim", 1, 0, "C");
 	$pdf->Cell(40, 10, "Kota Tujuan", 1, 0, "C");
 	$pdf->Cell(20, 10, "Berat", 1, 0, "C");
-	$pdf->Cell(40, 10, "Tanggal Pengiriman", 1, 1, "C");
+	$pdf->Cell(15, 10, "Tgl", 1, 1, "C");
 	//$pdf->Cell(120, 10, "Status Terakhir", 1, 1, "C");
 
 	// isi data
 	$pdf->SetFont("Times", "", "12");
 	$idx = 1;
+		$tot = array();
 	foreach ($laporan as $value) {
 		$id_pengiriman = $value['id_pengiriman'];
 		$nama_cust = $value['nama_cust'];
@@ -55,21 +57,29 @@ if (count($laporan) > 0) {
 		$bln = $value['bulan'];
 		$thn = $value['tahun'];
 		$tanggal = $thn.'-'.$bln.'-'.$tgl;
-		$date = date('d M Y', strtotime($tanggal));
+// 		$date = date('d M Y', strtotime($tanggal));
+		$date = date('d', strtotime($tanggal));
 		$periode = date('M Y', strtotime($tanggal));
 		$status_pengiriman = $value['status_pengiriman'];
-
+		$biaya_pengiriman = $value['biaya_pengiriman'];
+			array_push($tot, $biaya_pengiriman);
+		
 		$pdf->Cell(10, 10, $idx, 1, 0, "C");
+		$pdf->Cell(30, 10, "Rp. ".number_format($biaya_pengiriman,2,",","."), 1, 0, "");
 		$pdf->Cell(30, 10, $id_pengiriman, 1, 0, "");
 		$pdf->Cell(50, 10, $nama_cust, 1, 0, "");
 		$pdf->Cell(40, 10, $kota_tujuan, 1, 0, "");
 		$pdf->Cell(20, 10, $berat_pengiriman." Kg", 1, 0, "");
-		$pdf->Cell(40, 10, $date, 1, 1, "");
+		$pdf->Cell(15, 10, $date, 1, 1, "");
 		//$pdf->Cell(120, 10, $status_pengiriman, 1, 1, "");
 		
 		$idx ++;
 	}
+		$total = array_sum($tot);
+		$total = number_format($total,2,",",".");
 	$pdf->Ln();
+	$pdf->Ln(10);
+	$pdf->Cell(0, 0, "Total Biaya: Rp. ".$total, 1, 1, "C");
 
 	$pdf->Output("Laporan Bulanan (Periode ".$periode.").pdf", "D");
 } else {
