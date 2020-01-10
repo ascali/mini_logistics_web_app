@@ -44,12 +44,12 @@
        
       /* Handle */
       ::-webkit-scrollbar-thumb {
-        background: #343a40; 
+        background: #ff3414; 
       }
 
       /* Handle on hover */
       ::-webkit-scrollbar-thumb:hover {
-        background: #555; 
+        background: #fd7e14; /*#555*/ 
       }
     </style>
 
