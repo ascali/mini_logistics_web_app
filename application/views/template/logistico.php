@@ -30,29 +30,46 @@
     <!-- <link rel="mask-icon" href="<?= base_url(); ?>assets/img/favicons/safari-pinned-tab.svg" color="#563d7c"> -->
     <link rel="icon" href="<?= base_url(); ?>assets/img/nawala.png">
     <!-- <meta name="msapplication-config" content="https://getbootstrap.com/docs/4.4/assets/img/favicons/browserconfig.xml"> -->
+    <style type="text/css">
+        /*Handle bar*/
+            /* width */
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1; 
+            }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: #ff3414; 
+            }
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #fd7e14; /*#555*/ 
+            }
+        /* Handle bar */
+        /* WA Float CSS */
+            .wa-float{
+                position:fixed;
+                width:60px;
+                height:60px;
+                bottom:40px;
+                right:40px;
+                background-color:#25d366;
+                color:#FFF;
+                border-radius:50px;
+                text-align:center;
+                font-size:30px;
+                box-shadow: 2px 2px 3px #999;
+                z-index:100;
+            }
 
-    <style>
-      /* width */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-
-      /* Track */
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1; 
-      }
-       
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: #ff3414; 
-      }
-
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: #fd7e14; /*#555*/ 
-      }
+            .my-wa-float{
+                margin-top:16px;
+            }
+        /* WA Float CSS  */
     </style>
-
 
     <!-- CSS here -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/logistico/css/bootstrap.min.css">
@@ -86,7 +103,7 @@
                         <div class="col-xl-4 col-lg-4">
                             <div class="logo">
                                 <a href="index.html">
-                                    <img src="<?= base_url(); ?>assets/vendor/logistico/img/logo.png" alt="">
+                                    <img src="<?= base_url(); ?>assets/img/nawala.png" width="35%" alt="">
                                 </a>
                             </div>
                         </div>
@@ -94,13 +111,13 @@
                             <div class="header_right d-flex align-items-center">
                                 <div class="short_contact_list">
                                     <ul>
-                                        <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
+                                        <li><a href="#"> <i class="fa fa-envelope"></i> info@nawala-express.com</a></li>
                                         <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
                                     </ul>
                                 </div>
 
                                 <div class="book_btn d-none d-lg-block">
-                                    <a class="boxed-btn3-line" href="#">Get Free Quote</a>
+                                    <a class="boxed-btn3-line" href="#" id="signinup">Sign in / up</a>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +131,7 @@
                             <div class="col-12 d-block d-lg-none">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img src="<?= base_url(); ?>assets/vendor/logistico/img/logo.png" alt="">
+                                        <img src="<?= base_url(); ?>assets/img/nawala.png" width="35%" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -517,7 +534,7 @@
                     <div class="location_left">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="<?= base_url(); ?>assets/vendor/logistico/img/logo.png" alt="">
+                                <img src="<?= base_url(); ?>assets/img/nawala.png" width="35%" alt="">
                             </a>
                         </div>
                         <ul>
@@ -619,8 +636,8 @@
                     <div class="col-xl-12">
                         <p class="copy_right text-center">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
                 </div>
@@ -630,18 +647,80 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!--/ footer end  -->
 <!-- Button trigger modal -->
   
-  <!-- Modal -->
-  <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="serch_form">
-            <input type="text" placeholder="search" >
-            <button type="submit">search</button>
+    <!-- Modal -->
+    <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="serch_form">
+                <input type="text" placeholder="input no resi dan pantau kiriman anda" >
+                <button type="submit">cari</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Masuk</h5>
+            <a href="javascript:void(0)" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
+          </div>
+          <div class="modal-body">
+
+            <table style="width: 100%;">
+              <tr style="vertical-align: top;">
+                <td style="width: 50%; border-right:1px solid #eeeeee; padding-right: 10px;">
+                  <form method="post" action="<?php echo base_url(); ?>index.php/customer/ceklogin">
+                    <fieldset>
+                      <legend>Sudah Terdaftar</legend>
+                      <table style="width: 100%;">
+                        <tr>
+                          <td><label for="txtEmail">Email</label></td>
+                          <td>&nbsp;</td>
+                          <td><input id="txtEmail" class="form-control form-control-sm" name="txtEmail" type="text" placeholder="ketik email disini"></td>
+                        </tr>
+                        <tr>
+                          <td><label for="txtPassword">Password</label></td>
+                          <td>&nbsp;</td>
+                          <td><input id="txtPassword" class="form-control form-control-sm" name="txtPassword" type="password" placeholder="ketik password disini"></td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                          <td><button type="submit" class="btn btn-sm btn-primary float-right">Masuk</button></td>
+                        </tr>
+                      </table>
+                    </fieldset>
+                  </form>
+                </td>
+                <td style="width: 50%; padding-left: 10px;">
+                  <fieldset>
+                    <legend>Belum Terdaftar</legend>
+                    <label>
+                      Bagi Anda yang belum memiliki akun, silahkan 
+                      <a href="<?= base_url(); ?>index.php/page/daftar_pelanggan">klik disini</a>.
+                    </label>
+                  </fieldset>
+                </td>
+              </tr>
+            </table> 
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <!-- Login Modal -->
 
+    <!-- WA Float -->
+    <a href="https://api.whatsapp.com/send?phone=51955081075&text=Halo, saya butuh bantuan mengenai ..." class="wa-float" target="_blank">
+        <i class="fa fa-whatsapp my-wa-float"></i>
+    </a>
+    <!-- WA Float -->
     <!-- JS here -->
     <script src="<?= base_url(); ?>assets/vendor/logistico/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="<?= base_url(); ?>assets/vendor/logistico/js/vendor/jquery-1.12.4.min.js"></script>
@@ -674,7 +753,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
     <script src="<?= base_url(); ?>assets/vendor/logistico/js/main.js"></script>
-
+    <script type="text/javascript">
+        $('#signinup').click(function(){
+            $('#loginModal').modal('show');
+        });
+    </script>
 
 
 
